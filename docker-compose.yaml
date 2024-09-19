@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  webapp:
+    image: driversweb-image:latest
+    container_name: drivers-webapp
+    ports:
+      - "3000:3000"
+    command: ["npm", "start"]
