@@ -48,7 +48,7 @@ const About = () => {
             companies, mechanics, and carriers find and collaborate with each
             other. Our innovative app is designed to bridge the gap between
             these essential players in the transportation industry, ensuring
-            seamless connections and enhanced productivity for all.
+            seamless connections and enhanced productivity for all..
           </motion.p>
           <motion.button
             className="px-6 py-2 bg-gray-200 text-black rounded-md hover:bg-slate-100 hover:text-black transition-colors duration-300"
