@@ -36,10 +36,10 @@ export default function Template({ children }) {
 
   return (
     <div className="relative">
-      <div
+      {/*<div
         id="horizontal-overlay"
         className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-gray-900 to-gray-600 opacity-0 z-50"
-      />
+      />*/}
       <div id="page-content">
         {children}
       </div>
