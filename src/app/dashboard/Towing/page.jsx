@@ -9,6 +9,7 @@ import FloatingLabelInput from "@/app/Components/FloatingInput";
 
 const Towing = () => {
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
   const [formState, setFormState] = useState({
     serviceType: "Tower",
     username:"",
@@ -30,6 +31,8 @@ const Towing = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+
     if (!validateForm()) return;
 
     const data = formState;
@@ -54,6 +57,8 @@ const Towing = () => {
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -71,6 +76,7 @@ const Towing = () => {
       errors.confirmPassword = "Passwords do not match";
     }
 
+    setSubmitting(false);
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -168,8 +174,9 @@ const Towing = () => {
               <button
                 onClick={handleSubmit}
                 className="bg-black text-white py-2 px-16 rounded-md hover:bg-slate-900 transition-all duration-300 w-max"
+                disabled={submitting}
               >
-                Register
+                {submitting ? "Submitting..." : "Register"}
               </button>
             </div>
           </div>

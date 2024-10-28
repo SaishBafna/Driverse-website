@@ -9,6 +9,7 @@ import FloatingLabelInput from "@/app/Components/FloatingInput";
 
 const Mechanic = () => {
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
   const [formState, setFormState] = useState({
     serviceType: "Mechanic",
     username: "",
@@ -29,6 +30,7 @@ const Mechanic = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSubmitting(true);
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -54,6 +56,8 @@ const Mechanic = () => {
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong. Please try again.");
+    }finally {
+      setSubmitting(false);
     }
   };
 
@@ -70,6 +74,8 @@ const Mechanic = () => {
     if (formState.password !== formState.confirmPassword) {
       errors.confirmPassword = "Passwords do not match";
     }
+
+    setSubmitting(false);
 
     setErrors(errors);
     return Object.keys(errors).length === 0;
@@ -168,8 +174,9 @@ const Mechanic = () => {
             <button
               onClick={handleSubmit}
               className="bg-black text-white py-2 px-16 rounded-md hover:bg-slate-900 transition-all duration-300 w-max"
+              disabled={submitting}
             >
-              Register
+                {submitting ? "Submitting..." : "Register"}
             </button>
           </div>
         </div>
