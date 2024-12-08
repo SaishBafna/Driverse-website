@@ -21,7 +21,7 @@ export async function POST(request) {
     }
     const userExists = await User.findOne({ $or: [{ email }, { phone }] });
     if (userExists) {
-      return request.status(400).json({ message: "You Already Register For The Servise" });
+      return NextResponse.json({ message: "You Already Register For The Service" }, { status: 400 });
     }
 
     const newUser = new User({
