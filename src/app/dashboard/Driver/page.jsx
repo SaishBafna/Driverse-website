@@ -87,7 +87,7 @@ const Driver = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post("/api/registerUser", formState);
+      const response = await axios.post("https://driverse-website.onrender.com/api/registerUser", formState);
       
       if (response.status === 201) {
         toast.success("Registered successfully.");
