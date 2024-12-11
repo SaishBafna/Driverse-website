@@ -8,6 +8,9 @@ import Footer from "./Footer";
 import Features from "./Features";
 import Slider from "./Slider";
 import TalktoFriend from "./TalktoFriend";
+// import GmailVerify from "./GmailVerify";
+
+
 
 const Index = () => {
   return (
@@ -15,9 +18,10 @@ const Index = () => {
       <Navbar />
       <Landing />
       <Forms />
-      <Slider/>
+      <Slider />
+      {/* <GmailVerify/> */}
       <About />
-      <TalktoFriend/>
+      <TalktoFriend />
       <Features />
       <Footer />
     </div>

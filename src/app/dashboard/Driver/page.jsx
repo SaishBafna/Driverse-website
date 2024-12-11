@@ -90,7 +90,7 @@ const Driver = () => {
       const response = await axios.post("/api/registerUser", formState);
       
       if (response.status === 201) {
-        toast.success("Registered successfully.");
+        toast.success("Verify Your Email !");
         setFormState({
           serviceType: "Driver",
           username: "",
@@ -246,6 +246,8 @@ const Driver = () => {
           />
         </svg>
       </div>
+
+
     </div>
   );
 };
