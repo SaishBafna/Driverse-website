@@ -21,6 +21,9 @@ export async function POST(request) {
     const userExists = await User.findOne({ $or: [{ email }, { phone }] });
     if (userExists) {
       return NextResponse.json({ error: "User already exists" }, { status: 400 });
+
+      return NextResponse.json({ message: "You Already Register For The Service" }, { status: 400 });
+
     }
 
     const verificationToken = crypto.randomBytes(32).toString("hex");
