@@ -40,7 +40,7 @@ const Carriers = () => {
     console.log(data);
 
     try {
-      const response = await axios.post("/api/registerUser", data);
+      const response = await axios.post("https://driverse-website.onrender.com/api/registerUser", data);
       if (response.status === 201) {
         toast.success("Verify Your Email !");
         setFormState({
