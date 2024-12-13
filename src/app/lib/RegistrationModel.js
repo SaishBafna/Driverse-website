@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 
 const userSchema = new mongoose.Schema(
-  { 
+  {
     avatar: {
       type: {
         url: {
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim:true,
+      trim: true,
     },
     companyAddress: {
       type: String,
@@ -41,24 +41,31 @@ const userSchema = new mongoose.Schema(
     },
     serviceType: {
       type: String,
-      enum: ["Driver", "Mechanic", "Tower","Agent","Company"], 
+      enum: ["Driver", "Mechanic", "Tower", "Agent", "Company"],
       required: true,
     },
     deviceToken: {
-      type: String 
+      type: String
     },
-    isValidUser:{
+    isValidUser: {
       type: Boolean,
-      default: false 
+      default: false
     },
     password: {
       type: String,
       required: true,
     },
+    isVerified: { type: Boolean, default: false },
     otp: {
       type: String,
     },
     otpExpires: {
+      type: Date,
+    },
+    verificationToken:{
+      type: String,
+    },
+    verificationTokenExpiry:{
       type: Date,
     },
     refreshToken: {

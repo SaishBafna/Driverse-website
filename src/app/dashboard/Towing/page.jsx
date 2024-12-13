@@ -41,7 +41,7 @@ const Towing = () => {
     try {
       const response = await axios.post("https://driverse-website.onrender.com/api/registerUser", data);
       if (response.status === 201) {
-        toast.success("Registered successfully.");
+        toast.success("Verify Your Email !");
         setFormState({
           serviceType: "Tower",
           username:"",
