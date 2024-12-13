@@ -45,7 +45,3 @@ export async function POST(req) {
     return NextResponse.json({ error: "Error sending email" }, { status: 500 });
   }
 }
-
-export const config = {
-  runtime: "edge", // Optional: Use "nodejs" if Edge runtime is not required
-};
