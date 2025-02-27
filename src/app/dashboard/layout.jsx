@@ -4,9 +4,7 @@ import Footer from "@/app/Components/Footer";
 const Dashboard = ({ children }) => {
   return (
     <>
-      <Head>
-        <meta name="google-site-verification" content="HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y" />
-      </Head>
+      
       <div className="h-screen w-full flex flex-col relative antialiased">
         <Navbar />
         <div className="flex-grow flex items-center justify-center w-full">

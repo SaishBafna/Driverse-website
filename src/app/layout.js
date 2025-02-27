@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Driverse",
   description: "Driverse",
+  other: {
+    "google-site-verification": "HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y",
+  },
 };
 
 export default function RootLayout({ children }) {
