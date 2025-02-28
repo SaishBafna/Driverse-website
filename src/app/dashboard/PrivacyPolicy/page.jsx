@@ -176,7 +176,7 @@ const PrivacyPolicy = () => {
             title: 'Changes to This Privacy Policy',
             content: (
                 <div>
-                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the Last Updated date.</p>
                 </div>
             )
         },
