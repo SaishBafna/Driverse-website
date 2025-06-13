@@ -17,30 +17,24 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-white text-black px-10 py-10">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
-          <div className="col-span-1 hidden sm:block">
-            <ul className="space-y-5">
-              <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:mx-0">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left ">
+          <div className="col-span-1 hidden sm:block   ">
+            <ul className="space-y-5 ">
+              <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:ml-[-25px] ">
                 <FaApple className="text-white h-10 w-10" />
                 <div className="text-xs font-extralight text-white">
                   <h4>Download on the</h4>
                   <h1>App Store</h1>
                 </div>
               </li>
-              <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:mx-0">
+              <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:ml-[-25px]">
                 <BiLogoPlayStore className="text-white h-10 w-10" />
                 <div className="text-xs font-extralight text-white">
                   <h4>Download on the</h4>
                   <h1>Google Play</h1>
                 </div>
               </li>
-              <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:mx-0">
-                <IoLogoAndroid className="text-green-500 h-10 w-10" />
-                <div className="text-xs font-extralight text-white">
-                  <h4>Download on the</h4>
-                  <h1>android</h1>
-                </div>
-              </li>
+              
             </ul>
           </div>
 

@@ -74,7 +74,7 @@ const page = () => {
             />
           </motion.div>
         </motion.div>
-      </div>
+      </div>  
 
       {/* What We Do Section */}
       <div className="py-20 about">

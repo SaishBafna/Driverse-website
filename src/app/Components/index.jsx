@@ -12,6 +12,7 @@ import TalktoFriend from "./TalktoFriend";
 
 
 
+
 const Index = () => {
   return (
     <div className=" h-full ">
