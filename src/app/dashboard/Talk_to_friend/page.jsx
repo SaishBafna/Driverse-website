@@ -59,8 +59,8 @@ const TalkToFriend = () => {
           <div className="bg-gray-100 rounded-2xl p-6 shadow-sm border border-gray-200">
             <h2 className="text-2xl font-bold mb-3">🤝 What is Talk to Friend?</h2>
             <p className="text-gray-800 text-lg">
-              "Talk to Friend" is a voice-based support feature that connects drivers with friendly agents like you.
-              Whether drivers need someone to talk to, ask questions, or simply hear a comforting voice during long rides, you're there to help.
+              <strong>Talk to Friend</strong> is a voice-based support feature that connects drivers with friendly agents like you.
+              Whether drivers need someone to talk to, ask questions, or simply hear a comforting voice during long rides, you’re there to help.
               And as you talk, <strong>you earn</strong> — it’s that simple!
             </p>
           </div>
@@ -80,7 +80,7 @@ const TalkToFriend = () => {
           <div className="bg-gray-100 rounded-2xl p-6 shadow-sm border border-gray-200">
             <h2 className="text-2xl font-bold mb-3">🎧 Why Join as an Agent?</h2>
             <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
-              <li>Flexible timing — take calls when you're free</li>
+              <li>Flexible timing — take calls when you’re free</li>
               <li>Earn money from the comfort of your home</li>
               <li>Make a real impact on someone’s day</li>
               <li>Be part of a growing and supportive community</li>
