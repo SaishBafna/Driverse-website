@@ -50,7 +50,7 @@ const TalkToFriend = () => {
 
         <p className="text-lg md:text-xl text-center text-gray-700 mb-12">
           <span className="font-semibold">Turn Conversations into Earnings!</span><br />
-          At <strong>Earforyou</strong>, we believe every conversation matters — and now, every conversation can also help you earn!
+          At <strong>Talk to Friend</strong>, we believe every conversation matters — and now, every conversation can also help you earn!
         </p>
 
         {/* Info Sections */}
