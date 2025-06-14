@@ -45,7 +45,7 @@ const TalkToFriend = () => {
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-20 py-12">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-8">
-          💬 Earn with Driver – Talk to Friend
+          💬 Earn with Driverse – Talk to Friend
         </h1>
 
         <p className="text-lg md:text-xl text-center text-gray-700 mb-12">

@@ -60,7 +60,7 @@ const Navbar = () => {
           <ul className='flex gap-x-10 font-semibold'>
             <li onClick={() => { router.push("/") }} className={pathname === "/" ? "text-black pb-1 border-black border-b-4 h-full font-semibold" :"cursor-pointer hover:text-slate-700 text-slate-900 font-semibold"}>Home</li>
             <li onClick={() => { router.push("/dashboard/services") }} className={pathname === "/dashboard/services" ? "text-black pb-1 border-black border-b-4 font-semibold" :"cursor-pointer hover:text-slate-700 text-slate-900 font-semibold"}>Services</li>
-            <li onClick={() => { router.push("/dashboard/Talk_to_friend") }} className={pathname === "/dashboard/Talk_to_friend" ? "text-black pb-1 border-black border-b-4 h-full font-semibold" :"cursor-pointer hover:text-slate-700 text-slate-900 font-semibold"}>Talk To Friend</li>
+            <li onClick={() => { router.push("/dashboard/Talk_to_friend") }} className={pathname === "/dashboard/Talk_to_friend" ? "text-black pb-1 border-black border-b-4 h-full font-semibold" :"cursor-pointer hover:text-slate-700 text-slate-900 font-semibold"}>Earn With Driverse</li>
             <li onClick={() => { router.push("/dashboard/contact") }} className={pathname === "/dashboard/contact" ? "text-black pb-1 border-black border-b-4 font-semibold"  :"cursor-pointer hover:text-slate-700 text-slate-900 font-semibold"}>Contact</li>
           </ul>
         </div>
@@ -85,7 +85,7 @@ const Navbar = () => {
       <ul className='flex flex-col items-center justify-center h-full gap-6 font-bold text-lg'>
         <li onClick={() => { router.push("/"); toggleMenu(); }} className={pathname === "/" ? "text-white pb-1 border-white border-b-2" : "cursor-pointer hover:text-slate-200"}>Home</li>
         <li onClick={() => { router.push("/dashboard/services"); toggleMenu(); }} className={pathname === "/dashboard/services" ? "text-white pb-1 border-white border-b-2" : "cursor-pointer hover:text-slate-200"}>Services</li>
-        <li onClick={() => { router.push("/dashboard/Talk_to_friend"); toggleMenu(); }} className={pathname === "/dashboard/Talk_to_friend" ? "text-white pb-1 border-white border-b-2" : "cursor-pointer hover:text-slate-200"}>Talk To Friend</li>
+        <li onClick={() => { router.push("/dashboard/Talk_to_friend"); toggleMenu(); }} className={pathname === "/dashboard/Talk_to_friend" ? "text-white pb-1 border-white border-b-2" : "cursor-pointer hover:text-slate-200"}>Earn With Driverse</li>
         <li onClick={() => { router.push("/dashboard/contact"); toggleMenu(); }} className={pathname === "/dashboard/contact" ? "text-white pb-1 border-white border-b-2" : "cursor-pointer hover:text-slate-200"}>Contact</li>
       </ul>
     </motion.div>
