@@ -138,8 +138,7 @@ const Slider = () => {
                     Talk To Friend
                   </h1>
                   <p className="text-white text-sm sm:text-base mt-1 sm:mt-2 md:mt-3 lg:mt-3.5">
-                    Engage with our platform to connect with a trusted friend or
-                    advisor.
+                    Earn by talking – Connect with drivers through voice calls and get paid for every minute you talk.
                   </p>
                 </div>
 

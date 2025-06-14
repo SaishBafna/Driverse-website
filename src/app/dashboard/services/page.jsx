@@ -14,7 +14,7 @@ const fadeInLeft = {
   visible: { opacity: 1, x: 0 },
 };
 
-const Contact = () => {
+const Services = () => {
   const router = useRouter();
   return (
     <motion.div
@@ -269,8 +269,15 @@ const Contact = () => {
         </svg>
       </div>
       </motion.div>
+
+
     </motion.div>
+
+
+
+
+    
   );
 };
 
-export default Contact;
+export default Services;
