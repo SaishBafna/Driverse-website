@@ -1,6 +1,5 @@
 // import React from 'react';
 
-
 // const Talk_to_friend = () => {
 //   return (
 //    <>
@@ -49,19 +48,27 @@ const TalkToFriend = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-center text-gray-700 mb-12">
-          <span className="font-semibold">Turn Conversations into Earnings!</span><br />
-          At <strong>Talk to Friend</strong>, we believe every conversation matters — and now, every conversation can also help you earn!
+          <span className="font-semibold">
+            Turn Conversations into Earnings!
+          </span>
+          <br />
+          At <strong>Talk to Friend</strong>, we believe every conversation
+          matters — and now, every conversation can also help you earn!
         </p>
 
         {/* Info Sections */}
         <div className="space-y-10">
           {/* What is Talk to Friend */}
           <div className="bg-gray-100 rounded-2xl p-6 shadow-sm border border-gray-200">
-            <h2 className="text-2xl font-bold mb-3">🤝 What is Talk to Friend?</h2>
+            <h2 className="text-2xl font-bold mb-3">
+              🤝 What is Talk to Friend?
+            </h2>
             <p className="text-gray-800 text-lg">
-              <strong>Talk to Friend</strong> is a voice-based support feature that connects drivers with friendly agents like you.
-              Whether drivers need someone to talk to, ask questions, or simply hear a comforting voice during long rides, you’re there to help.
-              And as you talk, <strong>you earn</strong> — it’s that simple!
+              <strong>Talk to Friend</strong> is a voice-based support feature
+              that connects drivers with friendly agents like you. Whether
+              drivers need someone to talk to, ask questions, or simply hear a
+              comforting voice during long rides, you’re there to help. And as
+              you talk, <strong>you earn</strong> — it’s that simple!
             </p>
           </div>
 
@@ -71,14 +78,21 @@ const TalkToFriend = () => {
             <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
               <li>Drivers top up their accounts to access this feature.</li>
               <li>They connect with available agents via voice call.</li>
-              <li>You earn money for every minute you spend talking with them.</li>
-              <li>It’s a win-win: Drivers feel supported, and you get rewarded for being a great listener.</li>
+              <li>
+                You earn money for every minute you spend talking with them.
+              </li>
+              <li>
+                It’s a win-win: Drivers feel supported, and you get rewarded for
+                being a great listener.
+              </li>
             </ul>
           </div>
 
           {/* Why Join */}
           <div className="bg-gray-100 rounded-2xl p-6 shadow-sm border border-gray-200">
-            <h2 className="text-2xl font-bold mb-3">🎧 Why Join as an Agent?</h2>
+            <h2 className="text-2xl font-bold mb-3">
+              🎧 Why Join as an Agent?
+            </h2>
             <ul className="list-disc list-inside text-gray-800 text-lg space-y-2">
               <li>Flexible timing — take calls when you’re free</li>
               <li>Earn money from the comfort of your home</li>
