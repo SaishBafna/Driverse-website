@@ -180,19 +180,19 @@ const PrivacyPolicy = () => {
                 </div>
             )
         },
-        {
-            id: 'contact',
-            title: 'Contact Us',
-            content: (
-                <div>
-                    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                    <p className="my-2">[Company Name]</p>
-                    <p className="my-2">[Address]</p>
-                    <p className="my-2">[Email]</p>
-                    <p className="my-2">[Phone]</p>
-                </div>
-            )
-        }
+        // {
+        //     id: 'contact',
+        //     title: 'Contact Us',
+        //     content: (
+        //         <div>
+        //             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+        //             <p className="my-2">[Company Name]</p>
+        //             <p className="my-2">[Address]</p>
+        //             <p className="my-2">[Email]</p>
+        //             <p className="my-2">[Phone]</p>
+        //         </div>
+        //     )
+        // }
     ];
 
     const toggleSection = (sectionId) => {

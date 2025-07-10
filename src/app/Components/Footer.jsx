@@ -82,6 +82,11 @@ const Footer = () => {
                   Contact Us
                 </a>
               </li>
+              <li>
+                <a href="/dashboard/PrivacyPolicy" className="hover:text-gray-200">
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
 
