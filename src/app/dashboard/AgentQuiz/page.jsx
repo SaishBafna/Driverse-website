@@ -1,0 +1,332 @@
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
+import axios from "axios";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const AgentQuiz = () => {
+  const [email, setEmail] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [answers, setAnswers] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [score, setScore] = useState(null);
+
+  const quizQuestions = [
+    {
+      id: 1,
+      question: "What is the main purpose of the 'Talk to a Friend' feature?",
+      options: [
+        { id: "A", text: "To help drivers book towing services" },
+        {
+          id: "B",
+          text: "To provide drivers with emotional support through friendly conversations",
+        },
+        { id: "C", text: "To offer driving instructions to new truckers" },
+        { id: "D", text: "To report road conditions to dispatch" },
+      ],
+      correctAnswer: "B",
+    },
+    {
+      id: 2,
+      question: "Which of the following is acceptable during conversations?",
+      options: [
+        {
+          id: "A",
+          text: "Sharing your personal phone number if the driver insists",
+        },
+        { id: "B", text: "Discussing deep personal trauma in detail" },
+        { id: "C", text: "Light flirting, if both parties are comfortable" },
+        { id: "D", text: "Debating religion and politics actively" },
+      ],
+      correctAnswer: "C",
+    },
+    {
+      id: 3,
+      question:
+        "What should an agent do if a conversation turns negative or inappropriate?",
+      options: [
+        { id: "A", text: "Ignore it and let it continue" },
+        { id: "B", text: "Hang up without explanation" },
+        { id: "C", text: "Engage more to see where it goes" },
+        { id: "D", text: "Redirect the conversation to a lighter topic" },
+      ],
+      correctAnswer: "D",
+    },
+    {
+      id: 4,
+      question: "What kind of topics should agents focus on during calls?",
+      options: [
+        { id: "A", text: "Food, travel, and hobbies" },
+        { id: "B", text: "Music and current events" },
+        { id: "C", text: "Lighthearted, general conversations" },
+        { id: "D", text: "All of the above" },
+      ],
+      correctAnswer: "D",
+    },
+    {
+      id: 5,
+      question: "Which of the following is NOT allowed as an agent?",
+      options: [
+        { id: "A", text: "Using a made-up name like Simran or Gurpreet" },
+        { id: "B", text: "Asking about the driver's day and hobbies" },
+        { id: "C", text: "Sharing your real name and address" },
+        { id: "D", text: "Speaking in a calm and polite tone" },
+      ],
+      correctAnswer: "C",
+    },
+  ];
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/checkEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      console.log("Email check response:", response);
+      const data = await response.json();
+
+      if (response.ok) {
+        // if (email && email.includes("@") && email.includes(".")) {
+        setEmailSubmitted(true);
+        // }
+      } else {
+        console.error(data.error);
+        return toast.error(data.error || "Email not found");
+      }
+    } catch (error) {
+      console.error("Error checking email:", error);
+      return toast.error(data.error || "Email not found");
+    }
+  };
+
+  const handleAnswerSelect = (questionId, optionId) => {
+    if (!submitted) {
+      setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
+    }
+  };
+
+  const calculateScore = async () => {
+    let correct = 0;
+    quizQuestions.forEach((q) => {
+      if (answers[q.id] === q.correctAnswer) {
+        correct++;
+      }
+    });
+    const percentage = Math.round((correct / quizQuestions.length) * 100);
+    setScore(percentage);
+    setSubmitted(true);
+
+    if (percentage >= 80) {
+      try {
+        const email_data = { email: email };
+
+        const response = await axios.post("/api/submitQuiz", email_data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        // const data = await response.json();
+        console.log("Quiz submission response:", response);
+        if (!response.data.success) {
+          console.error(response.data.message);
+          toast.error(response.data.message || "Failed to submit quiz results");
+        } else {
+          toast.success("Quiz submitted successfully!");
+          window.location.href = "/";
+        }
+      } catch (error) {
+        console.error("Error submitting quiz:", error);
+        toast.error("Failed to submit quiz results");
+      }
+    }
+
+    return percentage >= 80;
+  };
+
+  const resetQuiz = () => {
+    setAnswers({});
+    setSubmitted(false);
+    setScore(null);
+  };
+
+  const getOptionClass = (question, optionId) => {
+    if (!submitted) return "";
+
+    if (optionId === question.correctAnswer) {
+      return "bg-green-100 border-green-500";
+    } else if (
+      optionId === answers[question.id] &&
+      optionId !== question.correctAnswer
+    ) {
+      return "bg-red-100 border-red-500";
+    }
+    return "";
+  };
+
+  if (!emailSubmitted) {
+    return (
+      <motion.div
+        className="w-full min-h-screen bg-gray-50 flex items-center justify-center p-4"
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div
+          className="max-w-md w-full bg-white rounded-xl shadow-lg p-8"
+          variants={fadeInUp}
+        >
+          <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Agent Verification
+          </h1>
+          <form onSubmit={handleEmailSubmit}>
+            <div className="mb-6">
+              <label htmlFor="email" className="block text-gray-700 mb-2">
+                Please enter your registered email address:
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                placeholder="Enter your register email"
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+            >
+              Verify Email
+            </button>
+          </form>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="w-full min-h-screen bg-gray-50 py-8 px-4 md:px-8 lg:px-16"
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div
+        className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8"
+        variants={fadeInUp}
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+            Agent Communication Quiz
+          </h1>
+          <div className="text-sm text-gray-600">Registered as: {email}</div>
+        </div>
+
+        <p className="text-gray-600 mb-8">
+          Complete this quiz with at least 80% correct answers to pass.
+        </p>
+
+        <div className="space-y-8">
+          {quizQuestions.map((question) => (
+            <motion.div
+              key={question.id}
+              className="border-b border-gray-200 pb-6 last:border-0"
+              variants={fadeInUp}
+            >
+              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-4">
+                {question.id}. {question.question}
+              </h3>
+              <div className="space-y-3">
+                {question.options.map((option) => (
+                  <div
+                    key={option.id}
+                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${getOptionClass(
+                      question,
+                      option.id
+                    )} ${!submitted ? "hover:bg-gray-50" : ""} ${
+                      answers[question.id] === option.id
+                        ? "border-black"
+                        : "border-gray-200"
+                    }`}
+                    onClick={() => handleAnswerSelect(question.id, option.id)}
+                  >
+                    <div className="flex items-center">
+                      <div
+                        className={`w-5 h-5 rounded-full border mr-3 flex items-center justify-center ${
+                          answers[question.id] === option.id
+                            ? "bg-black border-black"
+                            : "border-gray-400"
+                        }`}
+                      >
+                        {answers[question.id] === option.id && (
+                          <div className="w-2 h-2 rounded-full bg-white"></div>
+                        )}
+                      </div>
+                      <span className="text-gray-800">
+                        {option.id}. {option.text}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {!submitted ? (
+          <motion.div className="mt-10 text-center" variants={fadeInUp}>
+            <button
+              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              onClick={calculateScore}
+              disabled={Object.keys(answers).length !== quizQuestions.length}
+            >
+              Submit Answers
+            </button>
+            <p className="text-gray-500 mt-4">
+              {Object.keys(answers).length}/{quizQuestions.length} questions
+              answered
+            </p>
+          </motion.div>
+        ) : (
+          <motion.div className="mt-10 text-center" variants={fadeInUp}>
+            <div
+              className={`p-6 rounded-lg mb-6 ${
+                score >= 80
+                  ? "bg-green-50 text-green-800"
+                  : "bg-red-50 text-red-800"
+              }`}
+            >
+              <h3 className="text-xl font-bold mb-2">
+                {score >= 80 ? "Congratulations!" : "Try Again"}
+              </h3>
+              <p>
+                You scored {score}% -{" "}
+                {score >= 80
+                  ? "You passed the quiz!"
+                  : "You need at least 80% to pass."}
+              </p>
+            </div>
+            <button
+              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              onClick={resetQuiz}
+            >
+              Retake Quiz
+            </button>
+          </motion.div>
+        )}
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default AgentQuiz;

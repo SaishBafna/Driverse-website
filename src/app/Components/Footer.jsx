@@ -61,6 +61,16 @@ const Footer = () => {
                   Mechanic
                 </a>
               </li>
+               {/* <li>
+                <a href="/dashboard/AgentQuiz" className="hover:text-gray-200">
+                  Quiz
+                </a>
+              </li>
+              <li>
+                <a href="/dashboard/AgentTraining" className="hover:text-gray-200">
+                  Training
+                </a>
+              </li> */}
             </ul>
           </div>
 
