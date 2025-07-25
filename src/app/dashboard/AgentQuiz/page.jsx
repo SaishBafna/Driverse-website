@@ -93,8 +93,8 @@ const AgentQuiz = () => {
         body: JSON.stringify({ email }),
       });
 
-      console.log("Email check response:", response);
       const data = await response.json();
+      console.log("Email check response:", data);
 
       if (response.ok) {
         // if (email && email.includes("@") && email.includes(".")) {
@@ -102,7 +102,7 @@ const AgentQuiz = () => {
         // }
       } else {
         console.error(data.error);
-        return toast.error(data.error || "Email not found");
+        return toast.error(data.error || data.message || "Email not found");
       }
     } catch (error) {
       console.error("Error checking email:", error);

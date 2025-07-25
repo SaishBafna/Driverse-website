@@ -6,7 +6,7 @@ export async function POST(request) {
   try {
     await connectToDb();
 
-   const body = await request.json();
+    const body = await request.json();
     const { email } = body;
 
     if (!email) {
@@ -17,8 +17,7 @@ export async function POST(request) {
     }
 
     // Check if user exists with this email
-    const user = await User.findOne({ email }).select('email');
-    
+    const user = await User.findOne({ email });
     if (!user) {
       return NextResponse.json(
         { exists: false, message: "Email not found in our system" },
@@ -26,11 +25,22 @@ export async function POST(request) {
       );
     }
 
-    return NextResponse.json(
-      { exists: true, email: user.email },
-      { status: 200 }
-    );
-
+    if (user.isVerified) {
+      return NextResponse.json(
+        {
+          success: true,
+          exists: true,
+          isVerified: true,
+          message: "Email is already verified",
+        },
+        { status: 403 }
+      );
+    } else {
+      return NextResponse.json(
+        { exists: true, email: user.email },
+        { status: 200 }
+      );
+    }
   } catch (error) {
     console.error("Email check error:", error);
     return NextResponse.json(
