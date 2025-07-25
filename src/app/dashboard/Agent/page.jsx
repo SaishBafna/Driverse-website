@@ -87,10 +87,10 @@ const Agent = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post("/api/registerUser", formState);
+      const response = await axios.post("/api/agentRegister", formState);
 
       if (response.status === 201) {
-        toast.success("Verify Your Email !");
+        toast.success("Training Link Sent! Check your email for access.");
         setFormState({
           serviceType: "Agent",
           username: "",
