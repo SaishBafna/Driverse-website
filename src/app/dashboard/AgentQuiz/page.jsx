@@ -15,6 +15,8 @@ const AgentQuiz = () => {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(null);
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [quizLoading, setQuizLoading] = useState(false);
 
   const quizQuestions = [
     {
@@ -83,6 +85,7 @@ const AgentQuiz = () => {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
+    setEmailLoading(true);
 
     try {
       const response = await fetch("/api/checkEmail", {
@@ -97,16 +100,16 @@ const AgentQuiz = () => {
       console.log("Email check response:", data);
 
       if (response.ok) {
-        // if (email && email.includes("@") && email.includes(".")) {
         setEmailSubmitted(true);
-        // }
       } else {
         console.error(data.error);
-        return toast.error(data.error || data.message || "Email not found");
+        toast.error(data.error || data.message || "Email not found");
       }
     } catch (error) {
       console.error("Error checking email:", error);
-      return toast.error(data.error || "Email not found");
+      toast.error("Failed to verify email");
+    } finally {
+      setEmailLoading(false);
     }
   };
 
@@ -117,6 +120,7 @@ const AgentQuiz = () => {
   };
 
   const calculateScore = async () => {
+    setQuizLoading(true);
     let correct = 0;
     quizQuestions.forEach((q) => {
       if (answers[q.id] === q.correctAnswer) {
@@ -136,7 +140,7 @@ const AgentQuiz = () => {
             "Content-Type": "application/json",
           },
         });
-        // const data = await response.json();
+        
         console.log("Quiz submission response:", response);
         if (!response.data.success) {
           console.error(response.data.message);
@@ -150,8 +154,7 @@ const AgentQuiz = () => {
         toast.error("Failed to submit quiz results");
       }
     }
-
-    return percentage >= 80;
+    setQuizLoading(false);
   };
 
   const resetQuiz = () => {
@@ -205,9 +208,20 @@ const AgentQuiz = () => {
             </div>
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              className="w-full px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center"
+              disabled={emailLoading}
             >
-              Verify Email
+              {emailLoading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Verifying...
+                </>
+              ) : (
+                "Verify Email"
+              )}
             </button>
           </form>
         </motion.div>
@@ -286,15 +300,24 @@ const AgentQuiz = () => {
         {!submitted ? (
           <motion.div className="mt-10 text-center" variants={fadeInUp}>
             <button
-              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center mx-auto"
               onClick={calculateScore}
-              disabled={Object.keys(answers).length !== quizQuestions.length}
+              disabled={Object.keys(answers).length !== quizQuestions.length || quizLoading}
             >
-              Submit Answers
+              {quizLoading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Submitting...
+                </>
+              ) : (
+                "Submit Answers"
+              )}
             </button>
             <p className="text-gray-500 mt-4">
-              {Object.keys(answers).length}/{quizQuestions.length} questions
-              answered
+              {Object.keys(answers).length}/{quizQuestions.length} questions answered
             </p>
           </motion.div>
         ) : (
