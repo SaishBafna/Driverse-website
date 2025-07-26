@@ -106,7 +106,7 @@ const Agent = () => {
     } catch (error) {
       console.error("Registration error:", error.response?.data);
       toast.error(
-        error.response?.data?.message ||
+        error.response?.data?.error || error.response?.data?.message ||
           "Registration failed. Please try again."
       );
     } finally {

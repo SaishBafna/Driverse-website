@@ -106,7 +106,7 @@ const Driver = () => {
       }
     } catch (error) {
       console.error("Registration error:", error);
-      toast.error(error.response?.data?.message || "Registration failed. Please try again.");
+      toast.error(error.response?.data?.error || error.response?.data?.message || "Registration failed. Please try again.");
     } finally {
       setSubmitting(false);
     }

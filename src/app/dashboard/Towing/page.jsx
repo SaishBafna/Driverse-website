@@ -38,8 +38,10 @@ const Towing = () => {
     const phoneRegex = /^[0-9]{10,15}$/;
 
     if (!formState.username.trim()) errors.username = "Username is required";
-    if (!emailRegex.test(formState.email)) errors.email = "Invalid email address";
-    if (!phoneRegex.test(formState.phone)) errors.phone = "Invalid phone number";
+    if (!emailRegex.test(formState.email))
+      errors.email = "Invalid email address";
+    if (!phoneRegex.test(formState.phone))
+      errors.phone = "Invalid phone number";
     if (!formState.companyAddress.trim())
       errors.companyAddress = "Company address is required";
     if (formState.password.length < 8)
@@ -78,7 +80,11 @@ const Towing = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong. Please try again.");
+      toast.error(
+        error.response?.data?.error ||
+          error.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -166,9 +172,7 @@ const Towing = () => {
                 />
                 <button
                   type="button"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
-                  }
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute top-3.5 right-0 pr-3"
                 >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
