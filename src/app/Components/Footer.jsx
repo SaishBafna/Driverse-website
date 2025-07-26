@@ -102,7 +102,7 @@ const Footer = () => {
 
           <div className="col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-black">About Us</h3>
-            <div className="flex justify center items-center h-[0.5rem] w-24 mb-4 ml-[6.5rem] sm:ml-0"><Driverselogo/></div>
+            <div className="flex justify-center items-center h-[0.5rem] w-24 mb-4 ml-[6.5rem] sm:ml-0"><Driverselogo/></div>
             <p>
               Connecting Tow Trucking Companies, Mechanics, Carriers, and
               Drivers Seamlessly.
