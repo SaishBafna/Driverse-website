@@ -35,7 +35,7 @@ const Towing = () => {
   const validateForm = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9]{10,15}$/;
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
     if (!formState.username.trim()) errors.username = "Username is required";
     if (!emailRegex.test(formState.email))

@@ -42,22 +42,22 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-black">Services</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/dashboard/services#driver" className="hover:text-gray-200">
+                <a href="/dashboard/services#driver" className="hover:text-gray-400">
                   Driver
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#carriers" className="hover:text-gray-200">
+                <a href="/dashboard/services#carriers" className="hover:text-gray-400">
                   Carriers
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#towing" className="hover:text-gray-200">
+                <a href="/dashboard/services#towing" className="hover:text-gray-400">
                   Towing Companies
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#mechanic" className="hover:text-gray-200">
+                <a href="/dashboard/services#mechanic" className="hover:text-gray-400">
                   Mechanic
                 </a>
               </li>
@@ -78,22 +78,22 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-black">Useful Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="hover:text-gray-200">
+                <a href="/" className="hover:text-gray-400">
                   Home
                 </a>
               </li>
               <li>
-                <a href="/#whyChooseus" className="hover:text-gray-200">
+                <a href="/#whyChooseus" className="hover:text-gray-400">
                 why Choose Us
                 </a>
               </li>
               <li>
-                <a href="/dashboard/contact" className="hover:text-gray-200">
+                <a href="/dashboard/contact" className="hover:text-gray-400">
                   Contact Us
                 </a>
               </li>
               <li>
-                <a href="/dashboard/PrivacyPolicy" className="hover:text-gray-200">
+                <a href="/dashboard/PrivacyPolicy" className="hover:text-gray-400">
                   Privacy Policy
                 </a>
               </li>

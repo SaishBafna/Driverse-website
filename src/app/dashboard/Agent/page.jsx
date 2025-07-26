@@ -14,7 +14,6 @@ const Agent = () => {
     username: "",
     email: "",
     phone: "",
-    companyAddress: "",
     password: "",
     confirmPassword: "",
   });
@@ -37,7 +36,7 @@ const Agent = () => {
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/; // Basic phone validation for 10 digits
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
     if (!formState.username.trim()) {
       newErrors.username = "Username is required";
@@ -53,10 +52,6 @@ const Agent = () => {
       newErrors.phone = "Phone number is required";
     } else if (!phoneRegex.test(formState.phone)) {
       newErrors.phone = "Invalid phone number (10 digits required)";
-    }
-
-    if (!formState.companyAddress.trim()) {
-      newErrors.companyAddress = "Company address is required";
     }
 
     if (!formState.password) {
@@ -96,7 +91,6 @@ const Agent = () => {
           username: "",
           email: "",
           phone: "",
-          companyAddress: "",
           password: "",
           confirmPassword: "",
         });
@@ -178,7 +172,7 @@ const Agent = () => {
                 )}
               </div>
 
-              <div>
+             {/*  <div>
                 <FloatingLabelInput
                   type="text"
                   name="companyAddress"
@@ -192,7 +186,7 @@ const Agent = () => {
                     {errors.companyAddress}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               <div className="relative">
                 <FloatingLabelInput

@@ -37,7 +37,7 @@ const Driver = () => {
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/;  // Basic phone validation for 10 digits
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/; // Basic phone validation for international format
 
     if (!formState.username.trim()) {
       newErrors.username = "Username is required";
