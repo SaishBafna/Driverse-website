@@ -1,5 +1,6 @@
 import { connectToDb } from "@/app/lib/db";
 import User from "@/app/lib/RegistrationModel";
+import { console } from "inspector";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -7,7 +8,7 @@ export async function POST(request) {
   try {
     await connectToDb();
     const data = await request.json();
-    const { serviceType, username, phone, email, companyAddress, password, confirmPassword } = data;
+    const { serviceType, username, phone, email, password, confirmPassword } = data;
 
     if (!serviceType || !username || !phone || !email || !password || !confirmPassword) {
       return NextResponse.json({ error: "Required fields are missing" }, { status: 400 });
@@ -18,6 +19,9 @@ export async function POST(request) {
     }
 
     const userExists = await User.findOne({ $or: [{ email }, { phone }] });
+
+    console.log("User exists:", userExists);
+
     if (userExists) {
       return NextResponse.json({ error: "User already exists" }, { status: 400 });
     }
@@ -27,7 +31,7 @@ export async function POST(request) {
       username,
       phone,
       email,
-      companyAddress,
+      // companyAddress,
       password
     });
 
