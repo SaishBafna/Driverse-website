@@ -147,7 +147,6 @@ const AgentQuiz = () => {
           toast.error(response.data.message || "Failed to submit quiz results");
         } else {
           toast.success("Quiz submitted successfully!");
-          // window.location.href = "/";
         }
       } catch (error) {
         console.error("Error submitting quiz:", error);
@@ -164,56 +163,78 @@ const AgentQuiz = () => {
   };
 
   const getOptionClass = (question, optionId) => {
-    if (!submitted) return "";
+    if (!submitted) {
+      return answers[question.id] === optionId 
+        ? "border-blue-500 bg-blue-50" 
+        : "border-gray-200 hover:bg-gray-50";
+    }
 
     if (optionId === question.correctAnswer) {
-      return "bg-green-100 border-green-500";
+      return "border-green-500 bg-green-50";
     } else if (
       optionId === answers[question.id] &&
       optionId !== question.correctAnswer
     ) {
-      return "bg-red-100 border-red-500";
+      return "border-red-500 bg-red-50";
     }
-    return "";
+    return "border-gray-200";
+  };
+
+  const getRadioClass = (question, optionId) => {
+    if (!submitted) {
+      return answers[question.id] === optionId
+        ? "border-blue-500 bg-blue-500"
+        : "border-gray-400";
+    }
+
+    if (optionId === question.correctAnswer) {
+      return "border-green-500 bg-green-500";
+    } else if (
+      optionId === answers[question.id] &&
+      optionId !== question.correctAnswer
+    ) {
+      return "border-red-500 bg-red-500";
+    }
+    return "border-gray-400";
   };
 
   if (!emailSubmitted) {
     return (
       <motion.div
-        className="w-full min-h-screen bg-gray-50 flex items-center justify-center p-4"
+        className="w-full min-h-screen bg-gray-50 flex items-center justify-center p-4 sm:p-6"
         initial="hidden"
         animate="visible"
       >
         <motion.div
-          className="max-w-md w-full bg-white rounded-xl shadow-lg p-8"
+          className="max-w-md w-full bg-white rounded-xl shadow-lg p-6 sm:p-8"
           variants={fadeInUp}
         >
-          <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
             Agent Verification
           </h1>
           <form onSubmit={handleEmailSubmit}>
-            <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 mb-2">
+            <div className="mb-4 sm:mb-6">
+              <label htmlFor="email" className="block text-gray-700 mb-2 text-sm sm:text-base">
                 Please enter your registered email address:
               </label>
               <input
                 type="email"
                 id="email"
                 value={email}
-                placeholder="Enter your register email"
+                placeholder="Enter your registered email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-sm sm:text-base"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center"
+              className="w-full px-4 py-2 sm:px-6 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center text-sm sm:text-base"
               disabled={emailLoading}
             >
               {emailLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -231,66 +252,63 @@ const AgentQuiz = () => {
 
   return (
     <motion.div
-      className="w-full min-h-screen bg-gray-50 py-8 px-4 md:px-8 lg:px-16"
+      className="w-full min-h-screen bg-gray-50 py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8"
+        className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8"
         variants={fadeInUp}
       >
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
             Agent Communication Quiz
           </h1>
-          <div className="text-sm text-gray-600">Registered as: {email}</div>
+          <div className="text-xs sm:text-sm text-gray-600 break-all">Registered as: {email}</div>
         </div>
 
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
           Complete this quiz with at least 80% correct answers to pass.
         </p>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {quizQuestions.map((question) => (
             <motion.div
               key={question.id}
-              className="border-b border-gray-200 pb-6 last:border-0"
+              className="border-b border-gray-200 pb-4 sm:pb-6 last:border-0"
               variants={fadeInUp}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-4">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
                 {question.id}. {question.question}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {question.options.map((option) => (
-                  <div
+                  <label
                     key={option.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${getOptionClass(
-                      question,
-                      option.id
-                    )} ${!submitted ? "hover:bg-gray-50" : ""} ${
-                      answers[question.id] === option.id
-                        ? "border-black"
-                        : "border-gray-200"
-                    }`}
-                    onClick={() => handleAnswerSelect(question.id, option.id)}
+                    className={`flex items-start p-3 sm:p-4 border rounded-lg cursor-pointer transition-colors ${getOptionClass(question, option.id)}`}
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center h-5 mt-0.5 mr-3">
+                      <input
+                        type="radio"
+                        name={`question-${question.id}`}
+                        checked={answers[question.id] === option.id}
+                        onChange={() => handleAnswerSelect(question.id, option.id)}
+                        className="sr-only"
+                        disabled={submitted}
+                      />
                       <div
-                        className={`w-5 h-5 rounded-full border mr-3 flex items-center justify-center ${
-                          answers[question.id] === option.id
-                            ? "bg-black border-black"
-                            : "border-gray-400"
-                        }`}
+                        className={`h-4 w-4 rounded-full border-2 flex items-center justify-center ${getRadioClass(question, option.id)}`}
+                        aria-hidden="true"
                       >
                         {answers[question.id] === option.id && (
-                          <div className="w-2 h-2 rounded-full bg-white"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
                         )}
                       </div>
-                      <span className="text-gray-800">
-                        {option.id}. {option.text}
-                      </span>
                     </div>
-                  </div>
+                    <span className="text-gray-800 text-sm sm:text-base">
+                      {option.id}. {option.text}
+                    </span>
+                  </label>
                 ))}
               </div>
             </motion.div>
@@ -298,15 +316,15 @@ const AgentQuiz = () => {
         </div>
 
         {!submitted ? (
-          <motion.div className="mt-10 text-center" variants={fadeInUp}>
+          <motion.div className="mt-8 sm:mt-10 text-center" variants={fadeInUp}>
             <button
-              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center mx-auto"
+              className="px-6 py-2 sm:px-8 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center mx-auto text-sm sm:text-base"
               onClick={calculateScore}
               disabled={Object.keys(answers).length !== quizQuestions.length || quizLoading}
             >
               {quizLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -316,23 +334,23 @@ const AgentQuiz = () => {
                 "Submit Answers"
               )}
             </button>
-            <p className="text-gray-500 mt-4">
+            <p className="text-gray-500 mt-3 sm:mt-4 text-xs sm:text-sm">
               {Object.keys(answers).length}/{quizQuestions.length} questions answered
             </p>
           </motion.div>
         ) : (
-          <motion.div className="mt-10 text-center" variants={fadeInUp}>
+          <motion.div className="mt-8 sm:mt-10 text-center" variants={fadeInUp}>
             <div
-              className={`p-6 rounded-lg mb-6 ${
+              className={`p-4 sm:p-6 rounded-lg mb-4 sm:mb-6 ${
                 score >= 80
                   ? "bg-green-50 text-green-800"
                   : "bg-red-50 text-red-800"
               }`}
             >
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">
                 {score >= 80 ? "Congratulations!" : "Try Again"}
               </h3>
-              <p>
+              <p className="text-sm sm:text-base">
                 You scored {score}% -{" "}
                 {score >= 80
                   ? "You passed the quiz!"
@@ -340,7 +358,7 @@ const AgentQuiz = () => {
               </p>
             </div>
             <button
-              className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              className="px-6 py-2 sm:px-8 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium text-sm sm:text-base"
               onClick={resetQuiz}
             >
               Retake Quiz
