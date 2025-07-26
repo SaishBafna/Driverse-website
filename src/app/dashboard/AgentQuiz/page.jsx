@@ -147,7 +147,7 @@ const AgentQuiz = () => {
           toast.error(response.data.message || "Failed to submit quiz results");
         } else {
           toast.success("Quiz submitted successfully!");
-          window.location.href = "/";
+          // window.location.href = "/";
         }
       } catch (error) {
         console.error("Error submitting quiz:", error);
