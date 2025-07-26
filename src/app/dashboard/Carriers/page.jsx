@@ -235,7 +235,7 @@ const Carriers = () => {
   const validateForm = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
     if (!formState.username.trim()) {
       errors.username = "Username is required.";

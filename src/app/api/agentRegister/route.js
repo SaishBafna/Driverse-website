@@ -103,7 +103,7 @@ export async function POST(request) {
           </div>
           
           <div style="text-align: center; padding: 20px; background-color: #f8f9fa; font-size: 12px; color: #7f8c8d;">
-            <p>&copy; ${new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Driverse. All rights reserved.</p>
             <p>
               <a href="#" style="color: #7f8c8d; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
               <a href="#" style="color: #7f8c8d; text-decoration: none; margin: 0 10px;">Terms of Service</a>
