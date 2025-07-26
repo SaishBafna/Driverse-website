@@ -18,13 +18,20 @@ export async function POST(request) {
       return NextResponse.json({ error: "Passwords do not match" }, { status: 400 });
     }
 
-    const userExists = await User.findOne({ $or: [{ email }, { phone }] });
-    console.log(userExists);
+   
+    const userExists = await User.findOne({ email });
+    const userExistsphone = await User.findOne({ phone });
+
+    console.log("User exists:", userExists);
+
     if (userExists) {
-      return NextResponse.json({ error: "User already exists" }, { status: 400 });
+      console.log("User already exists:", userExists);
+      return NextResponse.json({ error: "User with this email already exists" }, { status: 400 });
+    }
 
-      return NextResponse.json({ message: "You Already Register For The Service" }, { status: 400 });
-
+    if (userExistsphone) {
+      console.log("User already exists:", userExistsphone);
+      return NextResponse.json({ error: "User with this phone number already exists" }, { status: 400 });
     }
 
     const verificationToken = crypto.randomBytes(32).toString("hex");

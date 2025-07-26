@@ -6,7 +6,6 @@
 // import axios from "axios";
 // import FloatingLabelInput from "@/app/Components/FloatingInput";
 
-
 // const Carriers = () => {
 //   const [errors, setErrors] = useState({});
 //   const [submitting, setSubmitting] = useState(false);
@@ -95,7 +94,7 @@
 //             Registration Form
 //           </h1>
 //           <p className="text-lg md:text-xl lg:text-2xl font-bold text-white flex items-center justify-center gap-x-3">
-//             For Carriers 
+//             For Carriers
 //           </p>
 //         </div>
 
@@ -202,8 +201,6 @@
 
 // export default Carriers;
 
-
-
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -289,7 +286,11 @@ const Carriers = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong. Please try again.");
+      toast.error(
+        error.response?.data?.error ||
+          error.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
     } finally {
       setSubmitting(false);
     }
