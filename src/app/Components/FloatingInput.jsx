@@ -4,6 +4,7 @@ const FloatingLabelInput = ({
   name,
   value,
   onChange,
+  placeholder,
   label,
   type = "text",
 }) => {
@@ -23,7 +24,7 @@ const FloatingLabelInput = ({
                    border-2 border-gray-300 rounded-md
                    focus:border-blue-500 focus:ring-0 focus:outline-none
                    transition-all duration-200 ease-in-out"
-        placeholder={label}
+        placeholder={placeholder || label}
       />
       <label
         htmlFor={name}
