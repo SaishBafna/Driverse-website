@@ -41,7 +41,7 @@ const Towing = () => {
     if (!emailRegex.test(formState.email))
       errors.email = "Invalid email address";
     if (!phoneRegex.test(formState.phone))
-      errors.phone = "Invalid phone number";
+      errors.phone = "Enter valid phone number with country code (e.g., +1234567890)";
     if (!formState.companyAddress.trim())
       errors.companyAddress = "Company address is required";
     if (formState.password.length < 8)

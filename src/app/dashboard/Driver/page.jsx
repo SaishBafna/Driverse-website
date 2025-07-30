@@ -52,7 +52,7 @@ const Driver = () => {
     if (!formState.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else if (!phoneRegex.test(formState.phone)) {
-      newErrors.phone = "Invalid phone number (10 digits required)";
+      newErrors.phone = "Enter valid phone number with country code (e.g., +1234567890)";
     }
 
     if (!formState.companyAddress.trim()) {

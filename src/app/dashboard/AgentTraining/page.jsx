@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Modal from "react-modal";
@@ -15,18 +15,21 @@ const AgentTraining = () => {
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  
+  const [videoCompleted, setVideoCompleted] = useState(false);
+  const videoRef = useRef(null);
+
   const trainingModule = {
     title: "Communication Protocol",
-    description: "Understand the proper way to communicate with clients and other service providers.",
-    duration: "25 min",
+    description:
+      "Understand the proper way to communicate with clients and other service providers.",
+    duration: "3:22 min",
     icon: "💬",
   };
 
   const languageVideos = {
-    english: "https://videos.pexels.com/video-files/7859858/uhd_25fps.mp4",
-    hindi: "https://videos.pexels.com/video-files/7859858/uhd_25fps.mp4",
-    punjabi: "https://videos.pexels.com/video-files/7859858/uhd_25fps.mp4"
+    english: "https://www.youtube.com/embed/MHPvcgcOqPU?si=4o609IGqa93fWJU4",
+    hindi: null, // Set to null for coming soon
+    punjabi: null, // Set to null for coming soon
   };
 
   const handleStartTraining = () => {
@@ -36,7 +39,12 @@ const AgentTraining = () => {
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
     setIsLanguageModalOpen(false);
-    setIsVideoPlaying(true);
+    
+    // Only open video player if the language is available (English)
+    if (languageVideos[language]) {
+      setIsVideoPlaying(true);
+      setVideoCompleted(false);
+    }
   };
 
   const handleVideoComplete = () => {
@@ -47,6 +55,11 @@ const AgentTraining = () => {
   const closeVideoPlayer = () => {
     setIsVideoPlaying(false);
     setSelectedLanguage(null);
+    setVideoCompleted(false);
+  };
+
+  const handleVideoEnd = () => {
+    setVideoCompleted(true);
   };
 
   return (
@@ -65,13 +78,14 @@ const AgentTraining = () => {
             Agent Communication Training
           </h1>
           <p className="text-slate-200 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
-            Complete your communication training to effectively interact with clients.
+            Complete your communication training to effectively interact with
+            clients.
           </p>
         </motion.div>
       </div>
 
       {/* Training Module */}
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16"
         variants={fadeInUp}
       >
@@ -79,19 +93,25 @@ const AgentTraining = () => {
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-6 text-center">
             Your Training Module
           </h2>
-          
+
           <div className="bg-white rounded-xl shadow-md overflow-hidden">
             <div className="p-4 sm:p-6 md:p-8">
               <div className="flex flex-col sm:flex-row items-start">
-                <span className="text-4xl mb-4 sm:mb-0 sm:mr-6">{trainingModule.icon}</span>
+                <span className="text-4xl mb-4 sm:mb-0 sm:mr-6">
+                  {trainingModule.icon}
+                </span>
                 <div className="w-full">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
                     {trainingModule.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">{trainingModule.description}</p>
+                  <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
+                    {trainingModule.description}
+                  </p>
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <span className="text-gray-500 text-sm sm:text-base">{trainingModule.duration}</span>
-                    <button 
+                    <span className="text-gray-500 text-sm sm:text-base">
+                      {trainingModule.duration}
+                    </span>
+                    <button
                       className="w-full sm:w-auto px-4 py-2 sm:px-6 sm:py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors duration-300 text-sm sm:text-base"
                       onClick={handleStartTraining}
                     >
@@ -106,7 +126,7 @@ const AgentTraining = () => {
       </motion.div>
 
       {/* Support Section */}
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12 lg:pb-16"
         variants={fadeInUp}
       >
@@ -154,13 +174,13 @@ const AgentTraining = () => {
               className="w-full px-4 py-2 md:px-6 md:py-3 bg-green-100 text-green-800 rounded-md hover:bg-green-200 transition-colors duration-300 text-sm md:text-base"
               onClick={() => handleLanguageSelect("hindi")}
             >
-              Hindi
+              Hindi {!languageVideos.hindi && "(Coming Soon)"}
             </button>
             <button
               className="w-full px-4 py-2 md:px-6 md:py-3 bg-yellow-100 text-yellow-800 rounded-md hover:bg-yellow-200 transition-colors duration-300 text-sm md:text-base"
               onClick={() => handleLanguageSelect("punjabi")}
             >
-              Punjabi
+              Punjabi {!languageVideos.punjabi && "(Coming Soon)"}
             </button>
           </div>
           <button
@@ -192,24 +212,28 @@ const AgentTraining = () => {
               ✕
             </button>
           </div>
-          
-          <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
-            <video
-              controls
-              autoPlay
-              onEnded={handleVideoComplete}
-              className="w-full h-full"
+
+          <div className="relative pt-[56.25%]">
+            {" "}
+            {/* 16:9 Aspect Ratio */}
+            <iframe
+              ref={videoRef}
+              src={`${languageVideos[selectedLanguage]}?autoplay=1&enablejsapi=1`}
+              className="absolute top-0 left-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+              allowFullScreen
+              title="Training Video"
+              onEnded={handleVideoEnd}
+            />
+          </div>
+
+          <div className="mt-4 text-center">
+            <button
+              onClick={handleVideoComplete}
+              className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors duration-300 text-lg font-medium"
             >
-              <source 
-                src={
-                  selectedLanguage === "english" ? languageVideos.english :
-                  selectedLanguage === "hindi" ? languageVideos.hindi :
-                  languageVideos.punjabi
-                } 
-                type="video/mp4" 
-              />
-              Your browser does not support the video tag.
-            </video>
+              Complete Training
+            </button>
           </div>
         </div>
       </Modal>
@@ -229,11 +253,11 @@ const AgentTraining = () => {
           border-radius: 0.5rem;
           outline: none;
           width: 90%;
-          max-width: 500px;
+          max-width: 800px;
           max-height: 90vh;
           overflow-y: auto;
         }
-        
+
         .modal-overlay {
           position: fixed;
           top: 0;
@@ -243,7 +267,7 @@ const AgentTraining = () => {
           background-color: rgba(0, 0, 0, 0.5);
           z-index: 1000;
         }
-        
+
         @media (max-width: 640px) {
           .modal {
             width: 95%;

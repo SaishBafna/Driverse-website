@@ -13,7 +13,6 @@ const Agent = () => {
     serviceType: "Agent",
     username: "",
     email: "",
-    phone: "",
     password: "",
     confirmPassword: "",
   });
@@ -36,7 +35,6 @@ const Agent = () => {
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
     if (!formState.username.trim()) {
       newErrors.username = "Username is required";
@@ -46,12 +44,6 @@ const Agent = () => {
       newErrors.email = "Email is required";
     } else if (!emailRegex.test(formState.email)) {
       newErrors.email = "Invalid email address";
-    }
-
-    if (!formState.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!phoneRegex.test(formState.phone)) {
-      newErrors.phone = "Invalid phone number (10 digits required)";
     }
 
     if (!formState.password) {
@@ -90,7 +82,6 @@ const Agent = () => {
           serviceType: "Agent",
           username: "",
           email: "",
-          phone: "",
           password: "",
           confirmPassword: "",
         });
@@ -158,7 +149,7 @@ const Agent = () => {
                 )}
               </div>
 
-              <div>
+              {/* <div>
                 <FloatingLabelInput
                   type="tel"
                   name="phone"
@@ -170,7 +161,7 @@ const Agent = () => {
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                 )}
-              </div>
+              </div> */}
 
              {/*  <div>
                 <FloatingLabelInput
