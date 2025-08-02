@@ -13,6 +13,7 @@ const Agent = () => {
     serviceType: "Agent",
     username: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
   });
@@ -35,10 +36,18 @@ const Agent = () => {
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/; // Basic phone validation for international format
 
     if (!formState.username.trim()) {
       newErrors.username = "Username is required";
     }
+
+     if (!formState.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!phoneRegex.test(formState.phone)) {
+      newErrors.phone = "Enter valid phone number with country code (e.g., +1234567890)";
+    }
+
 
     if (!formState.email.trim()) {
       newErrors.email = "Email is required";
@@ -82,6 +91,7 @@ const Agent = () => {
           serviceType: "Agent",
           username: "",
           email: "",
+          phone: "",
           password: "",
           confirmPassword: "",
         });
@@ -149,7 +159,7 @@ const Agent = () => {
                 )}
               </div>
 
-              {/* <div>
+               <div>
                 <FloatingLabelInput
                   type="tel"
                   name="phone"
@@ -158,10 +168,8 @@ const Agent = () => {
                   label="Phone"
                   required
                 />
-                {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-                )}
-              </div> */}
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
 
              {/*  <div>
                 <FloatingLabelInput
