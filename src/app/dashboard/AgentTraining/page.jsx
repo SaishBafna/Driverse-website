@@ -22,14 +22,14 @@ const AgentTraining = () => {
     title: "Communication Protocol",
     description:
       "Understand the proper way to communicate with clients and other service providers.",
-    duration: "3:22 min",
+    duration: "3:00 min",
     icon: "💬",
   };
 
   const languageVideos = {
-    english: "https://www.youtube.com/embed/MHPvcgcOqPU?si=4o609IGqa93fWJU4",
-    hindi: null, // Set to null for coming soon
-    punjabi: null, // Set to null for coming soon
+    english: "https://www.youtube.com/embed/jre8UROeZVk?si=j0eDxre24SjYXU41",
+    hindi: "https://www.youtube.com/embed/Jgqn_7z-Rfk?si=ZNLm1jRV_t_OJHut", // Set to null for coming soon
+    punjabi: "https://www.youtube.com/embed/3i8PQi2Tg0M?si=IvHhlM33B6JOCShn", // Set to null for coming soon
   };
 
   const handleStartTraining = () => {
