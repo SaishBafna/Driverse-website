@@ -76,7 +76,10 @@ const AgentQuiz = () => {
       options: [
         { id: "A", text: "Asking about the driver’s day and hobbies" },
         { id: "B", text: "Speaking in a calm and polite tone" },
-        { id: "C", text: "Sharing your personal information such as your address or phone number" },
+        {
+          id: "C",
+          text: "Sharing your personal information such as your address or phone number",
+        },
         { id: "D", text: "Keeping the conversation friendly and respectful" },
       ],
       correctAnswer: "C",
@@ -140,7 +143,7 @@ const AgentQuiz = () => {
             "Content-Type": "application/json",
           },
         });
-        
+
         console.log("Quiz submission response:", response);
         if (!response.data.success) {
           console.error(response.data.message);
@@ -164,8 +167,8 @@ const AgentQuiz = () => {
 
   const getOptionClass = (question, optionId) => {
     if (!submitted) {
-      return answers[question.id] === optionId 
-        ? "border-blue-500 bg-blue-50" 
+      return answers[question.id] === optionId
+        ? "border-blue-500 bg-blue-50"
         : "border-gray-200 hover:bg-gray-50";
     }
 
@@ -214,7 +217,10 @@ const AgentQuiz = () => {
           </h1>
           <form onSubmit={handleEmailSubmit}>
             <div className="mb-4 sm:mb-6">
-              <label htmlFor="email" className="block text-gray-700 mb-2 text-sm sm:text-base">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 mb-2 text-sm sm:text-base"
+              >
                 Please enter your registered email address:
               </label>
               <input
@@ -234,9 +240,25 @@ const AgentQuiz = () => {
             >
               {emailLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Verifying...
                 </>
@@ -264,7 +286,9 @@ const AgentQuiz = () => {
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
             Agent Communication Quiz
           </h1>
-          <div className="text-xs sm:text-sm text-gray-600 break-all">Registered as: {email}</div>
+          <div className="text-xs sm:text-sm text-gray-600 break-all">
+            Registered as: {email}
+          </div>
         </div>
 
         <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
@@ -285,19 +309,27 @@ const AgentQuiz = () => {
                 {question.options.map((option) => (
                   <label
                     key={option.id}
-                    className={`flex items-start p-3 sm:p-4 border rounded-lg cursor-pointer transition-colors ${getOptionClass(question, option.id)}`}
+                    className={`flex items-start p-3 sm:p-4 border rounded-lg cursor-pointer transition-colors ${getOptionClass(
+                      question,
+                      option.id
+                    )}`}
                   >
                     <div className="flex items-center h-5 mt-0.5 mr-3">
                       <input
                         type="radio"
                         name={`question-${question.id}`}
                         checked={answers[question.id] === option.id}
-                        onChange={() => handleAnswerSelect(question.id, option.id)}
+                        onChange={() =>
+                          handleAnswerSelect(question.id, option.id)
+                        }
                         className="sr-only"
                         disabled={submitted}
                       />
                       <div
-                        className={`h-4 w-4 rounded-full border-2 flex items-center justify-center ${getRadioClass(question, option.id)}`}
+                        className={`h-4 w-4 rounded-full border-2 flex items-center justify-center ${getRadioClass(
+                          question,
+                          option.id
+                        )}`}
                         aria-hidden="true"
                       >
                         {answers[question.id] === option.id && (
@@ -320,13 +352,32 @@ const AgentQuiz = () => {
             <button
               className="px-6 py-2 sm:px-8 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium flex items-center justify-center mx-auto text-sm sm:text-base"
               onClick={calculateScore}
-              disabled={Object.keys(answers).length !== quizQuestions.length || quizLoading}
+              disabled={
+                Object.keys(answers).length !== quizQuestions.length ||
+                quizLoading
+              }
             >
               {quizLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Submitting...
                 </>
@@ -335,7 +386,8 @@ const AgentQuiz = () => {
               )}
             </button>
             <p className="text-gray-500 mt-3 sm:mt-4 text-xs sm:text-sm">
-              {Object.keys(answers).length}/{quizQuestions.length} questions answered
+              {Object.keys(answers).length}/{quizQuestions.length} questions
+              answered
             </p>
           </motion.div>
         ) : (
@@ -353,16 +405,18 @@ const AgentQuiz = () => {
               <p className="text-sm sm:text-base">
                 You scored {score}% -{" "}
                 {score >= 80
-                  ? "You passed the quiz!"
+                  ? "You've passed the quiz! Please check your email, we’ve sent you a verification link."
                   : "You need at least 80% to pass."}
               </p>
             </div>
-            <button
-              className="px-6 py-2 sm:px-8 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium text-sm sm:text-base"
-              onClick={resetQuiz}
-            >
-              Retake Quiz
-            </button>
+            {score < 80 && (
+              <button
+                className="px-6 py-2 sm:px-8 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium text-sm sm:text-base"
+                onClick={resetQuiz}
+              >
+                Retake Quiz
+              </button>
+            )}
           </motion.div>
         )}
       </motion.div>
