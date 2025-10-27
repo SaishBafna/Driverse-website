@@ -42,7 +42,7 @@ const AgentQuiz = () => {
           text: "Sharing your personal phone number if the driver insists",
         },
         { id: "B", text: "Discussing deep personal trauma in detail" },
-        { id: "C", text: "Light flirting, if both parties are comfortable" },
+        { id: "C", text: "Light hearted and entertaining conversations." },
         { id: "D", text: "Debating religion and politics actively" },
       ],
       correctAnswer: "C",
