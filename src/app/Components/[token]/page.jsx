@@ -284,12 +284,8 @@ const GmailVerify = () => {
                     {!isLoading && verificationState === 'success' && (
                         <button 
                             className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                            onClick={() => {
-                                // Add redirect or next step logic
-                                router.push('/');
-                            }}
                         >
-                            Continue to Dashboard
+                            Open The App
                         </button>
                     )}
                 </div>
