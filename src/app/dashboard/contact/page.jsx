@@ -27,6 +27,12 @@ const Contact = () => {
                 835 Arbour Lake Rd NW,<br/> Calgary, AB T3G 4N2, Canada
                 </p>
               </div>
+              <div className="flex items-start">
+                <FaRegAddressCard className="mr-4 text-2xl text-black" />
+                <p className="text-lg">
+                5200 Dixie Road, Suite 206, Mississauga
+                </p>
+              </div>
             </div>
           </div>
 
