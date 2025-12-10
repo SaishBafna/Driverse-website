@@ -41,14 +41,14 @@ export async function POST(request) {
 
     // Generate verification token
     const verificationToken = crypto.randomBytes(32).toString("hex");
-    
+
     // Update user with verification token and expiry (15 minutes from now)
-    const verificationTokenExpiry = new Date(Date.now() + (15 * 60 * 1000));
+    const verificationTokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
     await User.updateOne(
       { email },
-      { 
+      {
         verificationToken,
-        verificationTokenExpiry
+        verificationTokenExpiry,
       }
     );
 
@@ -58,15 +58,15 @@ export async function POST(request) {
     // Configure email transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
-      auth: { 
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS 
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     // Email options
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `query@driverse.ai`,
       to: email,
       subject: "Verify Your Email - Driverse",
       html: `
@@ -109,9 +109,10 @@ export async function POST(request) {
   } catch (error) {
     console.error("Email verification error:", error);
     return NextResponse.json(
-      { 
+      {
         error: error.message || "Internal server error",
-        details: process.env.NODE_ENV === "development" ? error.stack : undefined
+        details:
+          process.env.NODE_ENV === "development" ? error.stack : undefined,
       },
       { status: 500 }
     );

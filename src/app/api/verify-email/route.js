@@ -40,10 +40,12 @@ export async function GET(request) {
     // SEND WELCOME EMAIL
     // -----------------------------
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.office365.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: "query@driverse.ai",
+        pass: "Jockeybanyan$",
       },
     });
 
@@ -97,7 +99,7 @@ export async function GET(request) {
     `;
 
     await transporter.sendMail({
-      from: `"Driverse Support" <query@driverse.ai>`,
+      from: `query@driverse.ai`,
       to: user.email,
       subject: "🎉 Welcome to Driverse – Your Email is Verified!",
       html: welcomeHtml,

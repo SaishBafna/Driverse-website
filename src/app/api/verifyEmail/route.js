@@ -1,4 +1,3 @@
-
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
@@ -9,7 +8,10 @@ export async function POST(req) {
     const { email, userId } = body;
 
     if (!email || !userId) {
-      return NextResponse.json({ error: "Email and User ID are required" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Email and User ID are required" },
+        { status: 400 }
+      );
     }
 
     // Generate a verification token
@@ -30,7 +32,7 @@ export async function POST(req) {
 
     // Send email
     await transporter.sendMail({
-      from: `"YourAppName" <${process.env.EMAIL_USER}>`,
+      from: `query@driverse.ai`,
       to: email,
       subject: "Verify your emails",
       html: `

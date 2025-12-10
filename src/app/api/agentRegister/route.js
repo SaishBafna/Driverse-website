@@ -8,14 +8,28 @@ export async function POST(request) {
   try {
     await connectToDb();
     const data = await request.json();
-    const { serviceType, username, phone, email, password, confirmPassword } = data;
+    const { serviceType, username, phone, email, password, confirmPassword } =
+      data;
 
-    if (!serviceType || !username || !phone || !email || !password || !confirmPassword) {
-      return NextResponse.json({ error: "Required fields are missing" }, { status: 400 });
+    if (
+      !serviceType ||
+      !username ||
+      !phone ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      return NextResponse.json(
+        { error: "Required fields are missing" },
+        { status: 400 }
+      );
     }
 
     if (password !== confirmPassword) {
-      return NextResponse.json({ error: "Passwords do not match" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Passwords do not match" },
+        { status: 400 }
+      );
     }
 
     const userExists = await User.findOne({ email });
@@ -25,12 +39,18 @@ export async function POST(request) {
 
     if (userExists) {
       console.log("User already exists:", userExists);
-      return NextResponse.json({ error: "User with this email already exists" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User with this email already exists" },
+        { status: 400 }
+      );
     }
 
     if (userExistsphone) {
       console.log("User already exists:", userExistsphone);
-      return NextResponse.json({ error: "User with this phone number already exists" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User with this phone number already exists" },
+        { status: 400 }
+      );
     }
 
     const newUser = new User({
@@ -39,19 +59,25 @@ export async function POST(request) {
       phone,
       email,
       // companyAddress,
-      password
+      password,
     });
 
     await newUser.save();
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+      host: "smtp.office365.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "query@driverse.ai",
+        pass: "Jockeybanyan$",
+      },
     });
-    
+
     const trainingLink = "https://driverse.ai/dashboard/AgentTraining"; // Replace with actual training link
-    
+
     await transporter.sendMail({
+      from: `query@driverse.ai`,
       to: email,
       subject: "Welcome to Our Agent Program - Next Steps",
       html: `
@@ -113,7 +139,13 @@ export async function POST(request) {
       `,
     });
 
-    return NextResponse.json({ message: "Registration successful. Training information sent to your email." }, { status: 201 });
+    return NextResponse.json(
+      {
+        message:
+          "Registration successful. Training information sent to your email.",
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error during registration:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

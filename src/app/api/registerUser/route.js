@@ -8,17 +8,37 @@ export async function POST(request) {
   try {
     await connectToDb();
     const data = await request.json();
-    const { serviceType, username, phone, email, companyAddress, password, confirmPassword } = data;
+    const {
+      serviceType,
+      username,
+      phone,
+      email,
+      companyAddress,
+      password,
+      confirmPassword,
+    } = data;
 
-    if (!serviceType || !username || !phone || !email || !password || !confirmPassword) {
-      return NextResponse.json({ error: "Required fields are missing" }, { status: 400 });
+    if (
+      !serviceType ||
+      !username ||
+      !phone ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      return NextResponse.json(
+        { error: "Required fields are missing" },
+        { status: 400 }
+      );
     }
 
     if (password !== confirmPassword) {
-      return NextResponse.json({ error: "Passwords do not match" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Passwords do not match" },
+        { status: 400 }
+      );
     }
 
-   
     const userExists = await User.findOne({ email });
     const userExistsphone = await User.findOne({ phone });
 
@@ -26,12 +46,18 @@ export async function POST(request) {
 
     if (userExists) {
       console.log("User already exists:", userExists);
-      return NextResponse.json({ error: "User with this email already exists" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User with this email already exists" },
+        { status: 400 }
+      );
     }
 
     if (userExistsphone) {
       console.log("User already exists:", userExistsphone);
-      return NextResponse.json({ error: "User with this phone number already exists" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User with this phone number already exists" },
+        { status: 400 }
+      );
     }
 
     const verificationToken = crypto.randomBytes(32).toString("hex");
@@ -40,10 +66,9 @@ export async function POST(request) {
     // const hashedToken = crypto.createHash("sha256").update(verificationToken).digest("hex");
 
     // Set an expiry time for the token (e.g., 1 hour from now)
-    const verificationTokenExpiry = new Date(Date.now() + (15 * 60 * 1000));
+    const verificationTokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
     // Set token expiry to 15 minutes from now
     // const verificationTokenExpiry = new Date(Date.now() + 3600000);
-
 
     const newUser = new User({
       serviceType,
@@ -53,20 +78,25 @@ export async function POST(request) {
       companyAddress,
       password,
       verificationToken,
-      verificationTokenExpiry
+      verificationTokenExpiry,
     });
 
     await newUser.save();
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+      host: "smtp.office365.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "query@driverse.ai",
+        pass: "Jockeybanyan$",
+      },
     });
-    
+
     const verificationUrl = `${process.env.FRONTEND_URL}/Components/verify?token=${verificationToken}&email=${email}`;
-    
-    
+    console.log(email);
     await transporter.sendMail({
+      from: `query@driverse.ai`,
       to: email,
       subject: "Verify Your Email - Driverse",
       html: `
@@ -92,9 +122,11 @@ export async function POST(request) {
         </div>
       `,
     });
-    
 
-    return NextResponse.json({ message: "Registration successful. Verification email sent." }, { status: 201 });
+    return NextResponse.json(
+      { message: "Registration successful. Verification email sent." },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error during registration:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
