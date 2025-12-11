@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
     },
     isValidUser: {
       type: Boolean,
-      default: false
+      default: true
     },
     password: {
       type: String,
