@@ -34,7 +34,6 @@ const Footer = () => {
                   <h1>Google Play</h1>
                 </div>
               </li>
-              
             </ul>
           </div>
 
@@ -42,26 +41,38 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-black">Services</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/dashboard/services#driver" className="hover:text-gray-400">
-                  Driver
+                <a
+                  href="/dashboard/services#driver"
+                  className="hover:text-gray-400"
+                >
+                  Drivers
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#carriers" className="hover:text-gray-400">
+                <a
+                  href="/dashboard/services#carriers"
+                  className="hover:text-gray-400"
+                >
                   Carriers
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#towing" className="hover:text-gray-400">
+                <a
+                  href="/dashboard/services#towing"
+                  className="hover:text-gray-400"
+                >
                   Towing Companies
                 </a>
               </li>
               <li>
-                <a href="/dashboard/services#mechanic" className="hover:text-gray-400">
+                <a
+                  href="/dashboard/services#mechanic"
+                  className="hover:text-gray-400"
+                >
                   Mechanic
                 </a>
               </li>
-               {/* <li>
+              {/* <li>
                 <a href="/dashboard/AgentQuiz" className="hover:text-gray-200">
                   Quiz
                 </a>
@@ -84,7 +95,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="/#whyChooseus" className="hover:text-gray-400">
-                why Choose Us
+                  Why Choose Us
                 </a>
               </li>
               <li>
@@ -93,7 +104,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/dashboard/PrivacyPolicy" className="hover:text-gray-400">
+                <a
+                  href="/dashboard/PrivacyPolicy"
+                  className="hover:text-gray-400"
+                >
                   Privacy Policy
                 </a>
               </li>
@@ -102,7 +116,9 @@ const Footer = () => {
 
           <div className="col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-black">About Us</h3>
-            <div className="flex justify-center items-center h-[0.5rem] w-24 mb-4 ml-[6.5rem] sm:ml-0"><Driverselogo/></div>
+            <div className="flex justify-center items-center h-[0.5rem] w-24 mb-4 md:ml-[6.5rem] lg:mx-0 mx-auto sm:ml-0">
+              <Driverselogo />
+            </div>
             <p>
               Connecting Tow Trucking Companies, Mechanics, Carriers, and
               Drivers Seamlessly.
@@ -120,12 +136,32 @@ const Footer = () => {
 
       <div className="flex flex-col sm:flex-row justify-between items-center text-black py-5 px-10 text-center sm:text-left bg-white">
         <div>
-          <span className="text-sm">&copy; Copyright {new Date().getFullYear()}{" "}</span>
+          <span className="text-sm">
+            &copy; Copyright {new Date().getFullYear()}{" "}
+          </span>
           <span className="text-black  font-sans">Driverse</span>
         </div>
         <div className="mt-4 sm:mt-0">
           <ul className="flex gap-4">
             <li>
+              <a
+                href="https://www.facebook.com/share/16rCabmHjZ/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook size={20} className="text-black" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/driverse-inc/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin size={20} className="text-black" />
+              </a>
+            </li>
+            {/* <li>
               <a
                 href="https://maps.app.goo.gl/gmt8wBXr4MQ9ZhZX7?g_st=com.google.maps.preview.copy"
                 target="_blank"
@@ -160,25 +196,7 @@ const Footer = () => {
               >
                 <FaTiktok size={20} className="text-black" />
               </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/profile.php?id=61561441182839&mibextid=ZbWKwL"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook size={20} className="text-black" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/driverse-inc-0a712631b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin size={20} className="text-black" />
-              </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

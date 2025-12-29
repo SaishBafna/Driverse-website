@@ -6,10 +6,59 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Driverse",
-  description: "Driverse",
+  metadataBase: new URL("https://driverse.ai"),
+
+  title: {
+    default: "Driverse.ai | Drivers, Mechanics, Towing & Voice Chat",
+    template: "%s | Driverse.ai",
+  },
+
+  description:
+    "Driverse.ai connects truck drivers with mechanics and towing services. Talk to friends using voice and chat while on the road.",
+
+  keywords: [
+    "truck drivers",
+    "driverse",
+    "mechanic near me",
+    "towing service",
+    "truck breakdown help",
+    "driver communication app",
+    "voice chat for drivers",
+    "talk to friend",
+  ],
+
+  alternates: {
+    canonical: "https://driverse.ai",
+  },
+
+  openGraph: {
+    title: "Driverse.ai – Driver Services & Voice Chat",
+    description:
+      "Find mechanics, towing services, and talk to friends via voice & chat. Built for truck drivers.",
+    url: "https://driverse.ai",
+    siteName: "Driverse.ai",
+    images: [
+      {
+        url: "/og-image.png", // place this in /public
+        width: 1200,
+        height: 630,
+        alt: "Driverse.ai",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Driverse.ai – Drivers & Voice Chat",
+    description:
+      "Marketplace for truck drivers with mechanic, towing & talk to friend features.",
+    images: ["/og-image.png"],
+  },
+
   other: {
-    "google-site-verification": "HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y",
+    "google-site-verification":
+      "HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y",
   },
 };
 
@@ -17,7 +66,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Meta Pixel Code */}
+        {/* ================= Schema Markup ================= */}
+        <Script
+          id="schema-driverse"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Driverse.ai",
+            url: "https://driverse.ai",
+            applicationCategory: "CommunicationApplication",
+            operatingSystem: "Web",
+            description:
+              "Driverse.ai connects truck drivers with mechanics, towing services, and voice/chat communication.",
+          })}
+        </Script>
+
+        {/* ================= Meta Pixel ================= */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -33,7 +100,6 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* NoScript Pixel fallback */}
         <noscript>
           <img
             height="1"
@@ -45,10 +111,8 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={inter.className}>
-        <div>
-          {children}
-          <Toaster richColors position="top-right" />
-        </div>
+        {children}
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
