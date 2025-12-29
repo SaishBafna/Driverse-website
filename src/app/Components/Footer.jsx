@@ -23,22 +23,22 @@ const Footer = () => {
               <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:ml-[-25px] ">
                 <FaApple className="text-white h-10 w-10" />
                 <div className="text-xs font-extralight text-white">
-                  <h4>Download on the</h4>
-                  <h1>App Store</h1>
+                  <div>Download on the</div>
+                  <div className="text-xl">App Store</div>
                 </div>
               </li>
               <li className="bg-black flex justify-center gap-x-3 items-center h-max w-max px-3 py-3 rounded-lg mx-auto md:ml-[-25px]">
                 <BiLogoPlayStore className="text-white h-10 w-10" />
                 <div className="text-xs font-extralight text-white">
-                  <h4>Download on the</h4>
-                  <h1>Google Play</h1>
+                  <div>Download on the</div>
+                  <div className="text-xl">Google Play</div>
                 </div>
               </li>
             </ul>
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-lg font-bold mb-4 text-black">Services</h3>
+            <div className="text-lg font-bold mb-4 text-black">Services</div>
             <ul className="space-y-2">
               <li>
                 <a
@@ -86,7 +86,7 @@ const Footer = () => {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-lg font-bold mb-4 text-black">Useful Links</h3>
+            <div className="text-lg font-bold mb-4 text-black">Useful Links</div>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="hover:text-gray-400">
@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4 text-black">About Us</h3>
+            <div className="text-lg font-semibold mb-4 text-black">About Us</div>
             <div className="flex justify-center items-center h-[0.5rem] w-24 mb-4 md:ml-[6.5rem] lg:mx-0 mx-auto sm:ml-0">
               <Driverselogo />
             </div>
