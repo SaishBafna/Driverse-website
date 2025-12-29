@@ -4,7 +4,7 @@ import ContactClient from "./ContactClient";
    CONTACT PAGE SEO
 ========================= */
 export const metadata = {
-  title: "Contact Driverse.ai | Driver, Mechanic & Towing Support",
+  title: "Contact Driverse | Driver, Mechanic & Towing Support",
   description:
     "Get in touch with Driverse.ai. Contact our team for support related to drivers, mechanics, towing services, carriers, or Talk to Friend voice chat.",
   keywords: [

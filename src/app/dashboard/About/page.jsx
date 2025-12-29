@@ -4,7 +4,7 @@ import AboutClient from "./AboutClient";
    PAGE SEO METADATA (SERVER)
 ========================= */
 export const metadata = {
-  title: "About Driverse.ai | Truck Drivers, Mechanics & Towing Platform",
+  title: "About Driverse | Truck Drivers, Mechanics & Towing Platform",
   description:
     "Driverse.ai connects truck drivers with mechanics, towing services, and carriers while offering voice and chat communication to stay connected on the road.",
   keywords: [

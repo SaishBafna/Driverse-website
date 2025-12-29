@@ -5,7 +5,7 @@ import ServicesClient from "./ServicesClient";
 ========================= */
 export const metadata = {
   title:
-    "Services | Drivers, Mechanics, Towing & Carriers – Driverse.ai",
+    "Services | Drivers, Mechanics, Towing & Carriers – Driverse",
   description:
     "Driverse.ai connects drivers, mechanics, towing companies, and carriers. Request services, post availability, and communicate seamlessly.",
   keywords: [

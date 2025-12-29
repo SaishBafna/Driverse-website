@@ -9,13 +9,14 @@ export const metadata = {
   metadataBase: new URL("https://driverse.ai"),
 
   title: {
-    default: "Driverse.ai | Drivers, Mechanics, Towing & Voice Chat",
-    template: "%s | Driverse.ai",
+    default: "Driverse | Drivers, Mechanics, Towing & Voice Chat",
+    template: "%s | Driverse",
   },
 
   description:
-    "Driverse.ai is a smart, all-in-one platform designed specifically for the transportation industry, connecting truck drivers, towing companies, mechanics, and carriers in one seamless ecosystem. The platform enables drivers to quickly request towing, mechanical, and roadside assistance services, helping reduce downtime and keep operations running smoothly. Mechanics and towing companies can list their services, showcase real-time availability, and access consistent job opportunities from verified users. Carriers can efficiently connect with trusted service providers to support their logistics and fleet requirements. In addition to service discovery, Driverse.ai offers a unique Talk to Friend feature that allows drivers to communicate through secure voice and chat, helping them stay connected, reduce loneliness during long hauls, and receive real-time support. Built with modern technology and a user-friendly interface, Driverse.ai focuses on speed, reliability, and community-driven engagement. Whether you are a driver looking for help on the road, a service provider seeking new opportunities, or a carrier managing operations, Driverse.ai delivers a reliable, efficient, and connected experience tailored to the needs of the transportation industry.",
-  keywords: [
+    "Driverse.ai connects truck drivers with mechanics, towing services, and carriers, plus friendly voice and chat conversations to stay connected—join today!",
+  
+    keywords: [
     "truck drivers",
     "driverse",
     "mechanic near me",
@@ -31,17 +32,17 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Driverse.ai – Driver Services & Voice Chat",
+    title: "Driverse – Driver Services & Voice Chat",
     description:
       "Find mechanics, towing services, and talk to friends via voice & chat. Built for truck drivers.",
     url: "https://driverse.ai",
-    siteName: "Driverse.ai",
+    siteName: "Driverse",
     images: [
       {
         url: "/og-image.png", // place this in /public
         width: 1200,
         height: 630,
-        alt: "Driverse.ai",
+        alt: "Driverse",
       },
     ],
     type: "website",
@@ -49,7 +50,7 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Driverse.ai – Drivers & Voice Chat",
+    title: "Driverse – Drivers & Voice Chat",
     description:
       "Marketplace for truck drivers with mechanic, towing & talk to friend features.",
     images: ["/og-image.png"],
@@ -73,12 +74,12 @@ export default function RootLayout({ children }) {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "Driverse.ai",
+            name: "Driverse",
             url: "https://driverse.ai",
             applicationCategory: "CommunicationApplication",
             operatingSystem: "Web",
             description:
-              "Driverse.ai connects truck drivers with mechanics, towing services, and voice/chat communication.",
+              "Driverse connects truck drivers with mechanics, towing services, and voice/chat communication.",
           })}
         </Script>
 

@@ -123,13 +123,13 @@ const Footer = () => {
               Connecting Tow Trucking Companies, Mechanics, Carriers, and
               Drivers Seamlessly.
             </p>
-            <a
+            {/* <a
               href="#"
               className="btn-arrow id-color hover-light text-black mt-4 inline-block"
             >
               <span className="line"></span>
               <span className="url">View Details</span>
-            </a>
+            </a> */}
           </div>
         </div>
       </footer>

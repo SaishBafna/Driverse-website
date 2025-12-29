@@ -4,7 +4,7 @@ import TalkToFriendClient from "./TalkToFriendClient";
    TALK TO FRIEND SEO
 ========================= */
 export const metadata = {
-  title: "Talk to Friend | Voice Chat & Earn by Talking – Driverse.ai",
+  title: "Talk to Friend | Voice Chat & Earn by Talking – Driverse",
   description:
     "Talk to Friend by Driverse.ai lets drivers connect via voice chat while agents earn money by listening, supporting, and engaging in conversations.",
   keywords: [
