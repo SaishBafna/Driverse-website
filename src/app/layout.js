@@ -14,8 +14,7 @@ export const metadata = {
   },
 
   description:
-    "Driverse.ai connects truck drivers with mechanics and towing services. Talk to friends using voice and chat while on the road.",
-
+    "Driverse.ai is a smart, all-in-one platform designed specifically for the transportation industry, connecting truck drivers, towing companies, mechanics, and carriers in one seamless ecosystem. The platform enables drivers to quickly request towing, mechanical, and roadside assistance services, helping reduce downtime and keep operations running smoothly. Mechanics and towing companies can list their services, showcase real-time availability, and access consistent job opportunities from verified users. Carriers can efficiently connect with trusted service providers to support their logistics and fleet requirements. In addition to service discovery, Driverse.ai offers a unique Talk to Friend feature that allows drivers to communicate through secure voice and chat, helping them stay connected, reduce loneliness during long hauls, and receive real-time support. Built with modern technology and a user-friendly interface, Driverse.ai focuses on speed, reliability, and community-driven engagement. Whether you are a driver looking for help on the road, a service provider seeking new opportunities, or a carrier managing operations, Driverse.ai delivers a reliable, efficient, and connected experience tailored to the needs of the transportation industry.",
   keywords: [
     "truck drivers",
     "driverse",
@@ -57,8 +56,7 @@ export const metadata = {
   },
 
   other: {
-    "google-site-verification":
-      "HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y",
+    "google-site-verification": "HAAWKRB89ds81zWwi2ywwJIfYxWrJsmMsPusz_bqj9Y",
   },
 };
 
