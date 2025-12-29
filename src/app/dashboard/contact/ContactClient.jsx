@@ -19,9 +19,9 @@ const ContactClient = () => {
         {/* Google Maps Embed */}
         <div className="bg-white text-black p-4 sm:p-8 lg:p-12 rounded-xl shadow-lg flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-sans font-bold mb-6 text-start text-gray-800">
+            <div className="text-3xl font-sans font-bold mb-6 text-start text-gray-800">
               Contact Us
-            </h2>
+            </div>
 
             <div className="space-y-6 text-left">
               <div className="flex items-center">

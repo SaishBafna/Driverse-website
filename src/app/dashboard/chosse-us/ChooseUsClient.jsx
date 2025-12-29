@@ -45,9 +45,9 @@ const ChooseUsClient = () => {
         >
           {/* Left Side Content (Text First on Mobile) */}
           <div className="flex-1 lg:px-20 md:px-12 sm:px-10 px-7 mb-6 md:mb-0 flex flex-col justify-start items-start text-right">
-            <h1 className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
+            <div className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
               Comprehensive Connectivity
-            </h1>
+            </div>
             <p className="text-lg mb-6 leading-6 text-left text-slate-800">
               Our platform bridges the gap between all key players in the
               transportation industry. Whether you&apos;re a towing company,
@@ -112,9 +112,9 @@ const ChooseUsClient = () => {
             variants={fadeInLeft}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h1 className="font-sans text-3xl font-extrabold mb-4 text-white">
+            <div className="font-sans text-3xl font-extrabold mb-4 text-white">
               User-Friendly Interface
-            </h1>
+            </div>
             <p className="text-lg mb-6 text-slate-200">
               Designed with simplicity and ease of use in mind, our app offers
               an intuitive interface that makes navigation and service requests
@@ -133,9 +133,9 @@ const ChooseUsClient = () => {
         >
           {/* Left Side Content (Text First on Mobile) */}
           <div className="flex-1 lg:px-20 md:px-12 sm:px-10 px-7 mb-6 md:mb-0 flex flex-col justify-start items-start text-right">
-            <h1 className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
+            <div className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
               Real-Time Availability
-            </h1>
+            </div>
             <p className="text-lg mb-6 leading-6 text-left text-slate-800">
               With real-time updates, towing companies and mechanics can post
               their availability and see job listings instantly. This ensures
@@ -186,9 +186,9 @@ const ChooseUsClient = () => {
             variants={fadeInLeft}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h1 className="font-sans text-3xl font-extrabold mb-4 text-white">
+            <div className="font-sans text-3xl font-extrabold mb-4 text-white">
               Enhanced Driver Engagement
-            </h1>
+            </div>
             <p className="text-lg mb-6 text-slate-200">
               Our unique &quot;Talk to a Friend&quot; feature keeps drivers
               engaged during their downtime, allowing them to connect with

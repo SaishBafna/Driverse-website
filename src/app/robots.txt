@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block private & dashboard pages
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://driverse.ai/sitemap.xml

@@ -59,9 +59,9 @@ const ServicesClient = () => {
         >
           {/* Left Side Content */}
           <div className="lg:px-20 md:px-12 sm:px-10 px-7 mb-6 md:mb-0 flex flex-col justify-start items-start text-right">
-            <h1 className="text-left font-sans  text-3xl text-black md:text-4xl font-extrabold mb-4">
+            <div className="text-left font-sans  text-3xl text-black md:text-4xl font-extrabold mb-4">
               For Driver:
-            </h1>
+            </div>
             <p className="text-lg mb-6 leading-6 text-left text-slate-800">
               <span className="font-bold">1.Service Requests:</span> Quickly
               find and request towing or mechanical services when needed,
@@ -133,9 +133,9 @@ const ServicesClient = () => {
             variants={fadeInLeft}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h1 className="font-sans text-3xl font-extrabold mb-4 text-white ">
+            <div className="font-sans text-3xl font-extrabold mb-4 text-white ">
               For Mechanics:
-            </h1>
+            </div>
             <p className="text-lg mb-6 text-slate-200">
               <span className="font-bold">1.Advertise Services:</span> Mechanics
               can post their services in designated areas, reaching a broader
@@ -176,9 +176,9 @@ const ServicesClient = () => {
   >
     {/* Left Side Content (Text First on Mobile) */}
     <div className="flex-1 lg:px-20 md:px-12 sm:px-10 px-7 mb-6 md:mb-0 flex flex-col justify-start items-start text-right">
-      <h1 className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
+      <div className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
         For Carriers:
-      </h1>
+      </div>
       <p className="text-lg mb-6 leading-6 text-left text-slate-800">
         <span className="font-bold">1. Request Services:</span> Easily request towing and mechanical services from reputable providers, ensuring your operations run smoothly.
         <br />
@@ -236,9 +236,9 @@ const ServicesClient = () => {
             variants={fadeInLeft}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h1 className="font-sans text-3xl font-extrabold mb-4 text-white ">
+            <div className="font-sans text-3xl font-extrabold mb-4 text-white ">
               For Tow Trucking companies:
-            </h1>
+            </div>
             <p className="text-lg mb-6 text-slate-200">
               <span className="font-bold">1.Post Availability:</span> Towing
               companies can list their available tow trucks in specific areas,

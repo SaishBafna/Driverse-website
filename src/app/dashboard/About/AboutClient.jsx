@@ -50,9 +50,9 @@ const AboutClient = () => {
             className="lg:px-20 md:px-12 sm:px-10 px-7 mb-6 md:mb-0 flex flex-col justify-start items-start text-right"
             variants={textVariant}
           >
-            <h1 className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
+            <div className="text-left font-sans text-3xl text-black md:text-4xl font-extrabold mb-4">
               Driverse Mission
-            </h1>
+            </div>
             <p className="text-lg mb-6 leading-6 text-left text-slate-800">
               Our mission is to create a dynamic platform that simplifies the
               search for work and services within the towing and transportation
@@ -114,9 +114,9 @@ const AboutClient = () => {
             className="flex-1 text-left mb-6 lg:mb-0 lg:pr-8 lg:px-20 md:px-12 sm:px-10 px-7"
             variants={textVariant}
           >
-            <h1 className="font-sans text-3xl font-extrabold mb-4 text-white">
+            <div className="font-sans text-3xl font-extrabold mb-4 text-white">
               Driverse Vision
-            </h1>
+            </div>
             <p className="text-lg mb-6 text-slate-200">
               We envision a transportation industry where connections are
               effortless, and opportunities are abundant. By leveraging
