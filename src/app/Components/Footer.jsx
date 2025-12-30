@@ -8,6 +8,7 @@ import {
   FaFacebook,
   FaLinkedin,
   FaApple,
+  FaInstagram,
 } from "react-icons/fa";
 import { BiLogoPlayStore } from "react-icons/bi";
 import { IoLogoAndroid } from "react-icons/io5";
@@ -86,7 +87,9 @@ const Footer = () => {
           </div>
 
           <div className="col-span-1">
-            <div className="text-lg font-bold mb-4 text-black">Useful Links</div>
+            <div className="text-lg font-bold mb-4 text-black">
+              Useful Links
+            </div>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="hover:text-gray-400">
@@ -115,7 +118,9 @@ const Footer = () => {
           </div>
 
           <div className="col-span-1">
-            <div className="text-lg font-semibold mb-4 text-black">About Us</div>
+            <div className="text-lg font-semibold mb-4 text-black">
+              About Us
+            </div>
             <div className="flex justify-center items-center h-[0.5rem] w-24 mb-4 md:ml-[6.5rem] lg:mx-0 mx-auto sm:ml-0">
               <Driverselogo />
             </div>
@@ -161,6 +166,33 @@ const Footer = () => {
                 <FaLinkedin size={20} className="text-black" />
               </a>
             </li>
+            <li>
+              <a
+                href="https://x.com/driverseai?s=11"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter size={20} className="text-black" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@driverse.ai?_r=1&_t=ZS-92dhZKxxtEz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok size={20} className="text-black" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/driverse.ai?igsh=MXcycGRzcjM4M3BkcQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram size={20} className="text-black" />
+              </a>
+            </li>
             {/* <li>
               <a
                 href="https://maps.app.goo.gl/gmt8wBXr4MQ9ZhZX7?g_st=com.google.maps.preview.copy"
@@ -170,15 +202,7 @@ const Footer = () => {
                 <FaMapMarkerAlt size={20} className="text-black" />
               </a>
             </li>
-            <li>
-              <a
-                href="https://x.com/driverseai?s=21"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter size={20} className="text-black" />
-              </a>
-            </li>
+            
             <li>
               <a
                 href="https://youtube.com/@driverseai?si=QdHNMyYki5Yui28b"
@@ -188,15 +212,7 @@ const Footer = () => {
                 <FaYoutube size={20} className="text-black" />
               </a>
             </li>
-            <li>
-              <a
-                href="https://www.tiktok.com/@driverse.ai?_t=8oFdHFKimMo&_r=1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTiktok size={20} className="text-black" />
-              </a>
-            </li> */}
+            */}
           </ul>
         </div>
       </div>

@@ -8,6 +8,7 @@ import {
   FaLinkedin,
   FaRegAddressCard,
   FaPhoneAlt,
+  FaInstagram,
 } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 
@@ -56,8 +57,8 @@ const ContactClient = () => {
               <div className="flex items-start">
                 <FaRegAddressCard className="mr-4 text-2xl text-black" />
                 <p className="text-lg">
-                  500 4th Avenue SW, Suite 2500,<br/>  Calgary, Alberta, T2P 2V6,
-                  Canada
+                  500 4th Avenue SW, Suite 2500,
+                  <br /> Calgary, Alberta, T2P 2V6, Canada
                 </p>
               </div>
             </div>
@@ -127,6 +128,33 @@ const ContactClient = () => {
                   className="hover:text-gray-700 transition-colors"
                 >
                   <FaLinkedin size={28} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/driverseai?s=11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTwitter size={20} className="text-black" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@driverse.ai?_r=1&_t=ZS-92dhZKxxtEz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTiktok size={20} className="text-black" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/driverse.ai?igsh=MXcycGRzcjM4M3BkcQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram size={20} className="text-black" />
                 </a>
               </li>
             </ul>
