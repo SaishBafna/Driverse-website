@@ -296,19 +296,179 @@ const PrivacyPolicyClient = () => {
         </div>
       ),
     },
-    // {
-    //     id: 'contact',
-    //     title: 'Contact Us',
-    //     content: (
-    //         <div>
-    //             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-    //             <p className="my-2">[Company Name]</p>
-    //             <p className="my-2">[Address]</p>
-    //             <p className="my-2">[Email]</p>
-    //             <p className="my-2">[Phone]</p>
-    //         </div>
-    //     )
-    // }
+    {
+      id: "cookies",
+      title: "Cookies and Tracking Technologies",
+      content: (
+        <div>
+          <p>
+            Driverse may use cookies, web beacons, SDKs, and similar tracking
+            technologies to enhance user experience, provide personalized
+            content, and analyze platform performance.
+          </p>
+          <p className="mt-2">We may use these for:</p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Authentication and session management</li>
+            <li>User preferences and personalization</li>
+            <li>Analytics and usage insights</li>
+            <li>Error reporting and performance monitoring</li>
+            <li>Marketing and remarketing (if applicable)</li>
+          </ul>
+          <p className="mt-2">
+            You may disable cookies through device or browser settings, but
+            certain features may not function properly.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "retention",
+      title: "Data Retention",
+      content: (
+        <div>
+          <p>
+            We retain personal information only for as long as necessary to
+            fulfill the purposes described in this policy, including compliance
+            with legal, tax, and reporting requirements.
+          </p>
+          <p className="mt-3">Retention periods depend on:</p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Account status (active or closed)</li>
+            <li>Regulatory requirements</li>
+            <li>Dispute resolution or enforcement needs</li>
+            <li>Operational necessities (logs, analytics, security)</li>
+          </ul>
+          <p>
+            After retention periods expire, we securely delete or anonymize your
+            data.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "international",
+      title: "International Data Transfers",
+      content: (
+        <div>
+          <p>
+            Driverse may store or process your data on servers located inside or
+            outside Canada. These locations may have different data protection
+            laws than your region.
+          </p>
+          <p className="mt-2">
+            By using our application, you consent to the transfer of your
+            information to such locations for processing and storage.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "marketing",
+      title: "Marketing and Communications",
+      content: (
+        <div>
+          <p>
+            We may send emails, notifications, or promotional messages related
+            to our services. You can opt out of marketing communications at any
+            time.
+          </p>
+          <p className="mt-2">
+            You may not opt out of essential messages such as:
+          </p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Account verification</li>
+            <li>Service-related updates</li>
+            <li>Security alerts</li>
+            <li>Policy updates</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      id: "consent",
+      title: "Consent",
+      content: (
+        <div>
+          <p>
+            By using Driverse, you consent to the collection, use, and
+            processing of your data as described in this Privacy Policy.
+          </p>
+          <p className="mt-2">Consent may be collected through:</p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Account registration</li>
+            <li>App installation</li>
+            <li>Enabling permissions (GPS, microphone, etc.)</li>
+            <li>Form submissions</li>
+          </ul>
+          <p>
+            You may withdraw certain consents through device or account
+            settings.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "breach",
+      title: "Data Breach Notification",
+      content: (
+        <div>
+          <p>
+            While we implement strong security measures, no system is entirely
+            immune. In the event of a data breach that affects your personal
+            information, we will:
+          </p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Investigate the incident promptly</li>
+            <li>Notify affected users when legally required</li>
+            <li>Provide guidance on protective steps</li>
+            <li>Comply with applicable regulatory obligations</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      id: "compliance",
+      title: "Legal Compliance and User Protections",
+      content: (
+        <div>
+          <p>
+            Depending on your location, you may have additional legal rights
+            under privacy laws such as GDPR, PIPEDA, or CCPA. While Driverse
+            does not guarantee legal compliance for all regions, we strive to
+            provide:
+          </p>
+          <ul className="list-disc pl-6 mb-3">
+            <li>Transparency about data collection</li>
+            <li>Access to your personal data</li>
+            <li>Correction or deletion options</li>
+            <li>Data portability upon request</li>
+            <li>Ability to withdraw certain permissions</li>
+          </ul>
+          <p className="mt-2">
+            Requests can be submitted to <strong>query@driverse.ai</strong>.
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "contact",
+      title: "Contact Us",
+      content: (
+        <div>
+          <p>
+            If you have any questions about this Privacy Policy, please contact
+            us:
+          </p>
+          <p className="my-2">
+            📧 Email: <strong>query@driverse.ai</strong>
+          </p>
+          <p className="my-2">
+            🌐 Website: <strong>https://driverse.ai</strong>
+          </p>
+          <p className="my-2">We will respond within a reasonable timeframe.</p>
+        </div>
+      ),
+    },
   ];
 
   const toggleSection = (sectionId) => {
